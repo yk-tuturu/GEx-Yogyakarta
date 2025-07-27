@@ -39,15 +39,16 @@ public class NoteSpawner : MonoBehaviour
 
         if (nextNote.targetTime - songPos < spawnOffset) {
             MapDataManager.Instance.Dequeue();
-            SpawnNote(nextNote.lane, nextNote.targetTime, nextNote.hitsound);
+            SpawnNote(nextNote.id, nextNote.lane, nextNote.targetTime, nextNote.hitsound);
         } 
     }
 
-    void SpawnNote(int lane_id, float timing, string hitsound) {
+    void SpawnNote(int id, int lane_id, float timing, string hitsound) {
         Vector3 notePosition = positionMarkers[lane_id].position;
 
         GameObject note = Instantiate(notePrefab, notePosition, Quaternion.identity);
         Note noteScript = note.GetComponent<Note>();
+        noteScript.id = id;
         noteScript.targetTime = timing; 
         noteScript.lane_id = lane_id;
         noteScript.hitsound = hitsound;

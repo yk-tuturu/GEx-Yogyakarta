@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Note : MonoBehaviour
 {
+    public int id; 
     public float targetTime; 
     public int lane_id;
     public string hitsound;

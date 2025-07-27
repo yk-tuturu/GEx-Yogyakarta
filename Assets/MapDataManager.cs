@@ -6,10 +6,16 @@ using System.IO;
 using System.Text;
 using System.Globalization;
 
-public class MapDataManager : MonoBehaviourSingleton<MapDataManager>
+public class MapDataManager : MonoBehaviour
 {
+    public static MapDataManager Instance; 
+
     public Queue<HitObjectData> mapData = new Queue<HitObjectData>();
     public int totalHitObjectCount; 
+
+    void Awake() {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -30,15 +36,19 @@ public class MapDataManager : MonoBehaviourSingleton<MapDataManager>
         using (StringReader sr = new StringReader(file.text))
         {
             string line;
+            int counter = 0;
             
             while ((line = sr.ReadLine()) != null)
             {
                 HitObjectData temp = new HitObjectData();
                 string[] info = line.Split(",");
+                temp.id = counter;
                 temp.lane = Int32.Parse(info[0]);
                 temp.targetTime = float.Parse(info[1], CultureInfo.InvariantCulture);
                 temp.hitsound = info[2];
                 mapData.Enqueue(temp);
+
+                counter++;
             }
         }
     }

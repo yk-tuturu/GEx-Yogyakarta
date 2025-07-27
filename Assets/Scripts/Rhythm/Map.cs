@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class HitObjectData
 {
+    public int id;
     public float targetTime;
     public int lane; 
     public string hitsound;

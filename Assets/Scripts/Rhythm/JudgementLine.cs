@@ -9,12 +9,6 @@ public class JudgementLine : MonoBehaviour
 
     public LaneUIManager laneUiManager;
 
-    public int combo; 
-    public int score;
-
-    public bool allPerfect = true;
-    public bool fullCombo = true;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -45,58 +39,37 @@ public class JudgementLine : MonoBehaviour
         Note nextNote = queue.Peek();
         if (nextNote.canHit) {
             nextNote.OnDespawnEvent -= OnDespawnNote;
-            queue.Dequeue();
             int hitValue = nextNote.GetScore();
+            bool isLastNote = nextNote.id == MapDataManager.Instance.totalHitObjectCount - 1;
+            queue.Dequeue();
             Destroy(nextNote.gameObject);
 
-            if (hitValue == 0) {
-                combo = 0;
-            } else {
-                combo++;
-            }
-
-            UpdateScore(hitValue);
-
-            laneUiManager.UpdateComboCounter(combo);
-            laneUiManager.UpdateJudgementDisplay(hitValue);
+            ScoreManager.Instance.UpdateComboAndScore(hitValue, isLastNote);
+            laneUiManager.UpdateComboCounter();
+            laneUiManager.UpdateJudgementDisplay();
+            laneUiManager.UpdateScoreDisplay();
+            laneUiManager.UpdateAccuracyDisplay();
 
             if (hitValue >= 0) {
                 laneUiManager.LaneEmit(input_id);
-            }
-
-            if (hitValue < 300) {
-                allPerfect = false;
-            } 
-
-            if (hitValue == 0) {
-                fullCombo = false;
             }
             
         }
     }
 
-    void UpdateScore(int hitValue) {
-        int maxScore = 1000000;
-        int totalNote = MapDataManager.Instance.totalHitObjectCount;
-        float scoreToAdd = (maxScore / totalNote) * (300f / 300f);
-        score += (int) Mathf.Round(scoreToAdd);
-
-        
-        // need some way of rounding up the score to 100000 if we AP
-        // if (MapDataManager.Instance.IsMapEmpty() && allPerfect) {
-        //     score = maxScore;
-        // }
-    }
-
     void OnDespawnNote(Note note) {
         note.OnDespawnEvent -= OnDespawnNote;
+        bool isLastNote = note.id == MapDataManager.Instance.totalHitObjectCount - 1;
         lanes[note.lane_id].Dequeue();
         Destroy(note.gameObject);
 
         Debug.Log("missed and despawned");
-        combo = 0;
-        laneUiManager.UpdateComboCounter(combo);
-        laneUiManager.UpdateJudgementDisplay(0);
+
+        ScoreManager.Instance.UpdateComboAndScore(0, isLastNote);
+        laneUiManager.UpdateComboCounter();
+        laneUiManager.UpdateJudgementDisplay();
+        laneUiManager.UpdateAccuracyDisplay();
+
         AudioManager.Instance.PlayOneShot("combobreak");
     }
 }

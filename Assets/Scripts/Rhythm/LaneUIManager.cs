@@ -27,6 +27,16 @@ public class LaneUIManager : MonoBehaviour
     public Transform laneEmitterParent;
     public List<LaneEmitter> laneEmitters;
 
+    public TextMeshProUGUI scoreText;
+    public int targetScore;
+    public int currScore;
+    public int scoreStepSize; 
+
+    public TextMeshProUGUI accText;
+    public float targetAcc = 100f;
+    public float currAcc = 100f;
+    public float accStepSize;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +66,19 @@ public class LaneUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (currScore < targetScore) {
+            currScore = Mathf.Min(currScore + scoreStepSize, targetScore);
+        }
+
+        scoreText.text = currScore.ToString("0000000");
+
+        if (Mathf.Abs(targetAcc - currAcc) > Mathf.Abs(accStepSize)) {
+            currAcc = currAcc + accStepSize;
+        } else {
+            currAcc = targetAcc;
+        }
+
+        accText.text = currAcc.ToString("F2") + "%";
     }
 
     public void TriggerLaneHighlight(int lane) {
@@ -83,7 +105,9 @@ public class LaneUIManager : MonoBehaviour
         }
     }
 
-    public void UpdateComboCounter(int combo) {
+    public void UpdateComboCounter() {
+        int combo = ScoreManager.Instance.combo;
+
         if (combo == 0) {
             comboCounter.text = "";
         } else {
@@ -98,14 +122,16 @@ public class LaneUIManager : MonoBehaviour
         seq.Play();
     }
 
-    public void UpdateJudgementDisplay(float score) {
+    public void UpdateJudgementDisplay() {
+        int hitValue = ScoreManager.Instance.lastHitValue;
+
         if (!judgement.gameObject.activeSelf) {
             judgement.gameObject.SetActive(true);
         }
 
-        if (score == 300) {
+        if (hitValue == 300) {
             judgement.sprite = perfectSprite;
-        } else if (score == 100) {
+        } else if (hitValue == 100) {
             judgement.sprite = goodSprite;
         } else {
             judgement.sprite = missSprite;
@@ -121,5 +147,27 @@ public class LaneUIManager : MonoBehaviour
 
     public void LaneEmit(int lane) {
         laneEmitters[lane].Emit();
+    }
+
+    public void UpdateScoreDisplay() {
+        targetScore = (int) Mathf.Round(ScoreManager.Instance.score);
+
+        int lastScoreAdded = (int) Mathf.Round(ScoreManager.Instance.lastScoreAdded);
+
+        currScore += (int)Mathf.Floor(lastScoreAdded * 0.7f);
+
+        int diff = targetScore - currScore; 
+
+        scoreStepSize = (int)Mathf.Floor(diff / 100f);
+    }
+
+    public void UpdateAccuracyDisplay() {
+        targetAcc = ScoreManager.Instance.accuracy;
+        
+        float diff = targetAcc - currAcc;
+
+        currAcc += diff * 0.7f;
+
+        accStepSize = (targetAcc - currAcc) / 30f;
     }
 }
