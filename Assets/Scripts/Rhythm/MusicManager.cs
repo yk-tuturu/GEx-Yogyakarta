@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MusicManager : MonoBehaviour
 {
@@ -30,9 +31,12 @@ public class MusicManager : MonoBehaviour
 
     public int loopCount = 0;
 
-    public float songStartDelay = 2f;
+    public float songStartDelay = 3f;
 
     public bool songStarted = false;
+    public bool songEnded = false;
+
+    public event Action onSongEnded;
 
     void Awake()
     {
@@ -60,6 +64,8 @@ public class MusicManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (songEnded) return; 
+
         if (!songStarted) {
             songPosition += Time.deltaTime; 
         } else {
@@ -67,7 +73,8 @@ public class MusicManager : MonoBehaviour
             songPosition = (float)musicSource.timeSamples / musicSource.clip.frequency;
             float sample = musicSource.timeSamples;
             if (beforeSamples > sample) {
-                Debug.Log("song ended");
+                songEnded = true;
+                onSongEnded?.Invoke();
             } else if (beforeSamples < sample){
                 beforeSamples = sample - 1f;
             }

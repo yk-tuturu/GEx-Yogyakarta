@@ -10,26 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: BGM
+  m_Name: test
   m_EditorClassIdentifier: 
-  m_GroupName: BGM
+  m_GroupName: test
   m_Data:
     m_SerializedData: []
-  m_GUID: bb3bf2a1cd0e1bc40a9c1794901f1325
+  m_GUID: 5db1d25227a92254c98726afcb78a348
   m_SerializeEntries:
-  - m_GUID: ad9ff0a83001ffb4094057b8b603fe25
-    m_Address: Assets/Sounds/BGM/test.wav
+  - m_GUID: 1b14f6b7ff29f284eb565fc058dd917f
+    m_Address: Assets/Sounds/drum-hitnormal.wav
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bda18ed2e3a8d78448469ea54adf834f
-    m_Address: Assets/Sounds/BGM/saron.wav
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - test
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7c92e29bd0d6a1f418ed7b83011ce308, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: a455261c44fedf64ba0ede7aa40df2e3, type: 2}
-    - {fileID: 11400000, guid: fc82f84eef89a324eb6181154fc5985a, type: 2}
+    - {fileID: 11400000, guid: b40dd0ea2bf729e45991b17daa9b04e6, type: 2}
+    - {fileID: 11400000, guid: 2b2cdfd47faf4b9488b6a1b944171d1e, type: 2}

@@ -16,6 +16,11 @@ public class RhythmGameLoader : MonoBehaviour
     public AudioClip bgm; 
 
     public event Action fadeToBlack;
+    public event Action scoreScreenTransition;
+
+    public AsyncOperationHandle<IList<AudioClip>> hitsoundHandle;
+    public AsyncOperationHandle<AudioClip> bgmHandle;
+
 
     void Awake() {
         if (Instance != null && Instance != this)
@@ -25,44 +30,39 @@ public class RhythmGameLoader : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Scene currentScene = SceneManager.GetActiveScene();
-        // if (currentScene.name == "rhythm") {
-        //     GameObject noteSpawnerObject = GameObject.FindWithTag("NoteSpawner");
-        //     NoteSpawner ns = noteSpawnerObject.GetComponent<NoteSpawner>();
-        //     ns.ReadMapFile(mapName);
-        // }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        if (scene.name == "rhythm") {
+            MusicManager.Instance.onSongEnded += OnSongEnded;
+        }
     }
 
     public void LoadRhythmScene(string mapName) {
         this.mapName = mapName;
-        StartCoroutine(LoadAssetsAndScene());
+        StartCoroutine(LoadRhythmAssetsAndScene());
     }
 
-    IEnumerator LoadAssetsAndScene() {
-        AsyncOperationHandle<IList<AudioClip>> handle =
-            Addressables.LoadAssetsAsync<AudioClip>(mapName, clip => {
-                hitsounds.Add(clip);
-            });
+    public void OnSongEnded() {
+        MusicManager.Instance.onSongEnded -= OnSongEnded;
+        StartCoroutine(LoadScoreScreen());
+    }
+
+    IEnumerator LoadRhythmAssetsAndScene() {
+        hitsoundHandle = Addressables.LoadAssetsAsync<AudioClip>(mapName, clip => {
+            hitsounds.Add(clip);
+        });
         
-        yield return handle; // Wait for loading to finish
+        yield return hitsoundHandle; // Wait for loading to finish
 
-        var BGMHandle = Addressables.LoadAssetAsync<AudioClip>($"Assets/Sounds/BGM/{mapName}.wav");
-        yield return BGMHandle;
+        bgmHandle = Addressables.LoadAssetAsync<AudioClip>($"Assets/Sounds/BGM/{mapName}.wav");
+        yield return bgmHandle;
 
-        if (BGMHandle.Status == AsyncOperationStatus.Succeeded)
+        if (bgmHandle.Status == AsyncOperationStatus.Succeeded)
         {
-            bgm = BGMHandle.Result;
+            bgm = bgmHandle.Result;
         }
 
         AsyncOperation asyncOp = SceneManager.LoadSceneAsync("rhythm");
@@ -76,6 +76,34 @@ public class RhythmGameLoader : MonoBehaviour
 
                 yield return new WaitForSeconds(0.6f);
 
+                asyncOp.allowSceneActivation = true;  
+            }
+
+            yield return null;
+        }
+    }
+
+    IEnumerator LoadScoreScreen() {
+        scoreScreenTransition?.Invoke();
+
+        yield return new WaitForSeconds(1.3f);
+
+        if (hitsoundHandle.IsValid())
+            Addressables.Release(hitsoundHandle);  // Releases all hitsounds
+
+        if (bgmHandle.IsValid())
+            Addressables.Release(bgmHandle);       // Releases the BGM clip
+
+        hitsounds.Clear();
+        bgm = null;
+
+        AsyncOperation asyncOp = SceneManager.LoadSceneAsync("score");
+        asyncOp.allowSceneActivation = false;  
+
+        while (!asyncOp.isDone)
+        {
+            if (asyncOp.progress >= 0.9f)
+            {
                 asyncOp.allowSceneActivation = true;  
             }
 

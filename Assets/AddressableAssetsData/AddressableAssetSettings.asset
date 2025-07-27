@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 5f4886a9699b96b4d901197b2935649f
   m_currentHash:
     serializedVersion: 2
-    Hash: b5270d51c52e02e20b5343e07d9b3313
+    Hash: be91cf44ffd5489180d9646e4febbe6e
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
+  - {fileID: 11400000, guid: 4f50356a45e523b40a761a696ec03197, type: 2}
   - {fileID: 11400000, guid: 76fca891af158934383293090096311b, type: 2}
   - {fileID: 11400000, guid: 7e45dd5ee65ed6947be0c31395403636, type: 2}
   - {fileID: 11400000, guid: 2f92075c004b640478a3d3bb776b8c1b, type: 2}
@@ -90,6 +91,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - saron
+    - test
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 342132c5c0e62844093f33e38988b28d, type: 2}

@@ -9,12 +9,15 @@ public class RhythmUIManager : MonoBehaviour
     public CanvasGroup cg; 
     public CanvasGroup blackScreen;
 
+    public RectTransform scorePanel;
+
     public float offset = 800f;
     
     // Start is called before the first frame update
     void Start()
     {
         AnimateTitleCard();
+        RhythmGameLoader.Instance.scoreScreenTransition += ScoreScreenTransition;
     }
 
     public void AnimateTitleCard() {
@@ -35,5 +38,12 @@ public class RhythmUIManager : MonoBehaviour
         seq.Join(cg.DOFade(0f, 0.7f));
 
         seq.Play();
+    }
+
+    public void ScoreScreenTransition() {
+        RhythmGameLoader.Instance.scoreScreenTransition -= ScoreScreenTransition;
+        blackScreen.gameObject.SetActive(true);
+        blackScreen.alpha = 0f;
+        blackScreen.DOFade(1f, 0.5f);
     }
 }
