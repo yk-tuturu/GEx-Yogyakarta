@@ -43,6 +43,7 @@ public class MusicManager : MonoBehaviour
     {
         //Load the AudioSource attached to the Conductor GameObject
         musicSource = GetComponent<AudioSource>();
+        musicSource.clip = RhythmGameLoader.Instance.bgm;
 
         //Calculate the number of seconds in each beat
         secPerBeat = 60f / songBpm;

@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+
+public class RhythmUIManager : MonoBehaviour
+{
+    public RectTransform titlePanel;
+    public CanvasGroup cg; 
+    public CanvasGroup blackScreen;
+
+    public float offset = 800f;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        AnimateTitleCard();
+    }
+
+    public void AnimateTitleCard() {
+        Vector2 originalPos = titlePanel.anchoredPosition;
+        titlePanel.anchoredPosition = new Vector2(originalPos.x, originalPos.y + offset);
+        cg.alpha = 0f;
+
+        blackScreen.gameObject.SetActive(true);
+        blackScreen.alpha = 1f;
+
+        Sequence seq = DOTween.Sequence();
+        seq.Append(blackScreen.DOFade(0f, 0.4f));
+        seq.Append(titlePanel.DOAnchorPosY(originalPos.y, 1.2f)
+             .SetEase(Ease.OutElastic, 1.1f, 0.7f));
+        seq.Join(cg.DOFade(1f, 0.5f));
+        seq.AppendInterval(1f);
+        seq.Append(titlePanel.DOAnchorPosY(originalPos.y + offset, 1f).SetEase(Ease.InCubic));
+        seq.Join(cg.DOFade(0f, 0.7f));
+
+        seq.Play();
+    }
+}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource source;
 
-    public List<AudioClip> soundList;
-
+    public List<AudioClip> commonSoundList;
+    
     public Dictionary<string, AudioClip> soundDict = new Dictionary<string, AudioClip>();
 
     // Start is called before the first frame update
@@ -23,9 +24,14 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
             
-        
-        foreach (var clip in soundList) {
+        foreach (var clip in commonSoundList) {
             soundDict[clip.name] = clip;
+        }
+
+        if (SceneManager.GetActiveScene().name == "rhythm") {
+            foreach (var clip in RhythmGameLoader.Instance.hitsounds) {
+                soundDict[clip.name] = clip;
+            }
         }
     }
 

@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: saron
+  m_EditorClassIdentifier: 
+  m_GroupName: saron
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 6f62ea81fe1e18f4f81531d1d5c05b04
+  m_SerializeEntries:
+  - m_GUID: 059054ec9572fbf4f8dfab3bc8758bae
+    m_Address: Assets/Sounds/Saron/saron5.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 12654d7b082ed7a4cafefeca39cd5971
+    m_Address: Assets/Sounds/Saron/saron6slowing.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d12267f66ab7c0428e543cb550096a6
+    m_Address: Assets/Sounds/Saron/saron2slow.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52039e3818e464b41b88539df50f0bf5
+    m_Address: Assets/Sounds/Saron/saron2duhlong.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55270b236557e6e4697d3b8dad4b93e3
+    m_Address: Assets/Sounds/Saron/saron7.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e810cd16569d2c4aac805ad52aeeab6
+    m_Address: Assets/Sounds/Saron/saron5slowing.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 757ce4c8ce2f4d440bacce252c477986
+    m_Address: Assets/Sounds/Saron/saron6.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97df0a9408085394f8f07e9d3f16683e
+    m_Address: Assets/Sounds/Saron/saron3.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a02a721f8471a3640892fdbb1c938bec
+    m_Address: Assets/Sounds/Saron/saron5slow.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab2009f6d8dc3864b9ca75fbe6d4fc26
+    m_Address: Assets/Sounds/Saron/saron7slow.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae673eb28ac8f974c822fb57730c5ba8
+    m_Address: Assets/Sounds/Saron/saron6slow.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aeb2b2afd50006847a347c1d14edbc99
+    m_Address: Assets/Sounds/Saron/saron3slowing.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed9ef26eebf0c444c8c2bdb5cb58c539
+    m_Address: Assets/Sounds/Saron/saron2.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f13020c91c52e324a8c796fd1daacdda
+    m_Address: Assets/Sounds/Saron/saron3slow.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f13cacd891506fa4c96178d8c4192f38
+    m_Address: Assets/Sounds/Saron/saron2slowing.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - saron
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 7c92e29bd0d6a1f418ed7b83011ce308, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7665548cfea45d4478306cfa632dcbb9, type: 2}
+    - {fileID: 11400000, guid: ca62862e575d9974fb9580206fb0531d, type: 2}
