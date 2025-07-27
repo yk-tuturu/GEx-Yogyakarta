@@ -37,9 +37,14 @@ public class NoteSpawner : MonoBehaviour
         HitObjectData nextNote = MapDataManager.Instance.PollNextNote();
         float songPos = MusicManager.Instance.GetSongPos();
 
-        if (nextNote.targetTime - songPos < spawnOffset) {
+        while (nextNote.targetTime - songPos < spawnOffset) {
             MapDataManager.Instance.Dequeue();
             SpawnNote(nextNote.id, nextNote.lane, nextNote.targetTime, nextNote.hitsound);
+
+            if (MapDataManager.Instance.IsMapEmpty()) {
+                break;
+            }
+            nextNote = MapDataManager.Instance.PollNextNote();
         } 
     }
 

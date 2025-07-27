@@ -17,6 +17,11 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: bb3bf2a1cd0e1bc40a9c1794901f1325
   m_SerializeEntries:
+  - m_GUID: 8a1ce80df49e81a428b50d1aad96b0ec
+    m_Address: Assets/Sounds/BGM/charles.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ad9ff0a83001ffb4094057b8b603fe25
     m_Address: Assets/Sounds/BGM/test.wav
     m_ReadOnly: 0

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: charles
+  m_EditorClassIdentifier: 
+  m_GroupName: charles
+  m_Data:
+    m_SerializedData: []
+  m_GUID: ce5fc12cbbc094f4ab8e0f047bd3b535
+  m_SerializeEntries:
+  - m_GUID: 20f96f0da3dca2e4783422664c46839b
+    m_Address: Assets/Sounds/sharuru/soft-hitfinish.ogg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - charles
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95caca444187e4f42832002ff0462064
+    m_Address: Assets/Sounds/sharuru/soft-hitnormal.ogg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - charles
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7b11175741a6994c8c07f2b4915277a
+    m_Address: Assets/Sounds/sharuru/soft-hitwhistle.ogg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - charles
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d682f378684b3184e95e957e8c4d4298
+    m_Address: Assets/Sounds/sharuru/soft-hitclap.ogg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - charles
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 7c92e29bd0d6a1f418ed7b83011ce308, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 144fba4a03ece4c4f95b74da23d1bd06, type: 2}
+    - {fileID: 11400000, guid: 7cb4cfedc6e217d48a4e9471e5334271, type: 2}
