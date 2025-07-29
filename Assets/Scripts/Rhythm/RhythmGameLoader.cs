@@ -51,13 +51,16 @@ public class RhythmGameLoader : MonoBehaviour
     }
 
     IEnumerator LoadRhythmAssetsAndScene() {
+        MapDataManager.Instance.ReadMapFile(mapName);
+
         hitsoundHandle = Addressables.LoadAssetsAsync<AudioClip>(mapName, clip => {
             hitsounds.Add(clip);
         });
         
         yield return hitsoundHandle; // Wait for loading to finish
 
-        bgmHandle = Addressables.LoadAssetAsync<AudioClip>($"Assets/Sounds/BGM/{mapName}.wav");
+        var songFilename = MapDataManager.Instance.songFilename;
+        bgmHandle = Addressables.LoadAssetAsync<AudioClip>($"Assets/Sounds/BGM/{songFilename}");
         yield return bgmHandle;
 
         if (bgmHandle.Status == AsyncOperationStatus.Succeeded)
@@ -85,6 +88,8 @@ public class RhythmGameLoader : MonoBehaviour
 
     IEnumerator LoadScoreScreen() {
         scoreScreenTransition?.Invoke();
+
+        MapDataManager.Instance.Reset();
 
         yield return new WaitForSeconds(1.3f);
 

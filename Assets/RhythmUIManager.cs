@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class RhythmUIManager : MonoBehaviour
 {
     public RectTransform titlePanel;
+    public TextMeshProUGUI titleText;
+    public TextMeshProUGUI subtitleText;
     public CanvasGroup cg; 
     public CanvasGroup blackScreen;
 
@@ -16,6 +19,9 @@ public class RhythmUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        titleText.text = MapDataManager.Instance.title;
+        subtitleText.text = MapDataManager.Instance.subtitle;
+        
         AnimateTitleCard();
         RhythmGameLoader.Instance.scoreScreenTransition += ScoreScreenTransition;
     }

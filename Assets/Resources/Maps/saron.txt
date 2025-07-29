@@ -1,3 +1,9 @@
+[General]
+Audio:saron.wav
+Title:Lagu Gugur Gunung
+Subtitle:Bahagian Saron
+Delay:0
+[HitObject]
 1,5.25,saron2duhlong
 5,6.0,saron6
 6,6.75,saron7

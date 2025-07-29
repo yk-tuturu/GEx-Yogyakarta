@@ -158,7 +158,7 @@ public class LaneUIManager : MonoBehaviour
 
         int diff = targetScore - currScore; 
 
-        scoreStepSize = (int)Mathf.Floor(diff / 100f);
+        scoreStepSize = (int)Mathf.Floor(diff / 50f);
     }
 
     public void UpdateAccuracyDisplay() {

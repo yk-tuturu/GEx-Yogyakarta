@@ -19,6 +19,10 @@ public class JudgementLine : MonoBehaviour
         InputManager.Instance.OnRhythmLaneInput += OnLaneInput;
     }
 
+    void OnDestroy() {
+        InputManager.Instance.OnRhythmLaneInput -= OnLaneInput;
+    }
+
     // Update is called once per frame
     void Update()
     {

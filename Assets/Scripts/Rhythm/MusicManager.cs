@@ -31,7 +31,7 @@ public class MusicManager : MonoBehaviour
 
     public int loopCount = 0;
 
-    public float songStartDelay = 3f;
+    public float songStartDelay = 4f;
 
     public bool songStarted = false;
     public bool songEnded = false;
@@ -48,6 +48,8 @@ public class MusicManager : MonoBehaviour
         //Load the AudioSource attached to the Conductor GameObject
         musicSource = GetComponent<AudioSource>();
         musicSource.clip = RhythmGameLoader.Instance.bgm;
+
+        songStartDelay += MapDataManager.Instance.delay;
 
         //Calculate the number of seconds in each beat
         secPerBeat = 60f / songBpm;

@@ -1,3 +1,9 @@
+[General]
+Audio:charles.wav
+Title:Charles
+Subtitle:Balloon
+Delay:0
+[HitObject]
 1,1.264,soft-hitnormal
 4,1.264,soft-hitnormal
 2,1.471,soft-hitnormal

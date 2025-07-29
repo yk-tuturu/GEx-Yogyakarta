@@ -97,12 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a8f994d3efbbd438e2a31dc545f642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   targetTime: 0
   lane_id: 0
   hitsound: 
   perfectWindow: 0.05
   goodWindow: 0.12
-  missWindow: 0.4
+  missWindow: 0.25
   offset: 0
   judgementY: -3.61
   despawnY: -6.5

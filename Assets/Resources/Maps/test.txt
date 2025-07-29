@@ -1,3 +1,9 @@
+[General]
+Audio:test.wav
+Title:Test
+Subtitle:It's just a test
+Delay:0
+[HitObject]
 4,0.0,drum-hitnormal
 5,0.5,drum-hitnormal
 1,0.5,drum-hitnormal
