@@ -20,8 +20,14 @@ public class Note : MonoBehaviour
 
     public bool canHit = false;
 
+    
+
     public delegate void OnDespawn(Note note);
     public event OnDespawn OnDespawnEvent;
+
+    // buncha debug stuff
+    public delegate void AutoHit(Note note);
+    public event AutoHit OnAutoHit;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +49,10 @@ public class Note : MonoBehaviour
 
         if (!canHit && songPos > targetTime - missWindow) {
             canHit = true; 
+        }
+
+        if (songPos >= targetTime) {
+            OnAutoHit?.Invoke(this);
         }
 
         // if the hit window is exceeded, fire the event to despawn this note

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 5f4886a9699b96b4d901197b2935649f
   m_currentHash:
     serializedVersion: 2
-    Hash: cb1b2422ca3024f374ee8139ff6b4609
+    Hash: 94ec860f912797cadcd3f82a4c3d8f52
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 4f50356a45e523b40a761a696ec03197, type: 2}
   - {fileID: 11400000, guid: 76fca891af158934383293090096311b, type: 2}
+  - {fileID: 11400000, guid: 6fcc3dad047953746b4e7a655bcad2e2, type: 2}
   - {fileID: 11400000, guid: 7e45dd5ee65ed6947be0c31395403636, type: 2}
   - {fileID: 11400000, guid: 2f92075c004b640478a3d3bb776b8c1b, type: 2}
   - {fileID: 11400000, guid: ef9e8e6d33979324e9a37951d60945fe, type: 2}
@@ -94,6 +95,7 @@ MonoBehaviour:
     - saron
     - test
     - charles
+    - bonang
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 342132c5c0e62844093f33e38988b28d, type: 2}

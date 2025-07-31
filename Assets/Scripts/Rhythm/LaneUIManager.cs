@@ -63,6 +63,10 @@ public class LaneUIManager : MonoBehaviour
         judgement.gameObject.SetActive(false);
     }
 
+    void OnDestroy() {
+        InputManager.Instance.OnRhythmLaneRelease -= HandleLaneRelease;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -70,7 +74,7 @@ public class LaneUIManager : MonoBehaviour
             currScore = Mathf.Min(currScore + scoreStepSize, targetScore);
         }
 
-        scoreText.text = currScore.ToString("0000000");
+        scoreText.SetText("{0:0000000}", currScore);
 
         if (Mathf.Abs(targetAcc - currAcc) > Mathf.Abs(accStepSize)) {
             currAcc = currAcc + accStepSize;
@@ -78,7 +82,7 @@ public class LaneUIManager : MonoBehaviour
             currAcc = targetAcc;
         }
 
-        accText.text = currAcc.ToString("F2") + "%";
+        accText.SetText("{0:0.00}%", currAcc);
     }
 
     public void TriggerLaneHighlight(int lane) {

@@ -89,8 +89,6 @@ public class RhythmGameLoader : MonoBehaviour
     IEnumerator LoadScoreScreen() {
         scoreScreenTransition?.Invoke();
 
-        MapDataManager.Instance.Reset();
-
         yield return new WaitForSeconds(1.3f);
 
         if (hitsoundHandle.IsValid())

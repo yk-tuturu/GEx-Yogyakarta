@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: bonang
+  m_EditorClassIdentifier: 
+  m_GroupName: bonang
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 68b3fcfa631b862429ca466ebfdd017f
+  m_SerializeEntries:
+  - m_GUID: 066873bad9a16234bbef5ce3fcd72c5b
+    m_Address: Assets/Sounds/bonang/bonang3lowlongtgt.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37ca21a0459ccdd4f8e4eab3e6953ebc
+    m_Address: Assets/Sounds/bonang/bonang7highlong.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57fe39ac43e7b854eadc637ac70a3f1d
+    m_Address: Assets/Sounds/bonang/bonang3highlongtgt.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 632192992e19b90499260a7f8737c521
+    m_Address: Assets/Sounds/bonang/bonang2highlong 1.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66adae430be0054428c5d750d83700a3
+    m_Address: Assets/Sounds/bonang/bonang3highshort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 67dc40c6f303dee4da4d7a41cb16f751
+    m_Address: Assets/Sounds/bonang/bonang5lowlong.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a91cba32f3f8e24eabfe2463fca870b
+    m_Address: Assets/Sounds/bonang/bonang6767-7loud.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71c16c2f10aeaa948b5c562f155e78b0
+    m_Address: Assets/Sounds/bonang/bonang2lowshort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77ae330794e6a2544a135cb1b9e2c98d
+    m_Address: Assets/Sounds/bonang/bonang6767-6loud.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c5c7e5753e128a498b6831e3dd57a6a
+    m_Address: Assets/Sounds/bonang/bonang2lowlong.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 839842f55605f4543bedb63a480d5fa5
+    m_Address: Assets/Sounds/bonang/bonang3highlong 1.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8711ce0a03959944985e72269b81b7b0
+    m_Address: Assets/Sounds/bonang/bonang7lowshort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8aa2b0a55f50b854b95535c92addb546
+    m_Address: Assets/Sounds/bonang/bonang7lowlong.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9521b178ca98b98498908884d91d3740
+    m_Address: Assets/Sounds/bonang/bonang2highlong.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e7ee38d7d7c75c429bbd90fc403dca4
+    m_Address: Assets/Sounds/bonang/bonang-2653-6.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a6bbaf6a99c0a8846abcbd8bff166700
+    m_Address: Assets/Sounds/bonang/bonang5lowshort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8ac6b39c5210844d9a24ec9d38fb83b
+    m_Address: Assets/Sounds/bonang/bonang-6767-7.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8cd679e6f2f10a45aede1b852bd9d17
+    m_Address: Assets/Sounds/bonang/bonang2highshort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a96e6329aa2c2ab489c4c77866fc621e
+    m_Address: Assets/Sounds/bonang/bonang-2653-2.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af24dcda2cd9b354c9647dc7879559af
+    m_Address: Assets/Sounds/bonang/bonang3lowlong.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b61b73f9cdf97ca44ad857b054028672
+    m_Address: Assets/Sounds/bonang/bonang-6767-6.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c94b0474b0b0f854ea4243dec86a5dae
+    m_Address: Assets/Sounds/bonang/bonang3lowshort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cff7bb0b61909534fb67f2e54cf04f8c
+    m_Address: Assets/Sounds/bonang/bonang6lowlong.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d1ba226ecd2bc9b478158df2b6489a20
+    m_Address: Assets/Sounds/bonang/bonang6highlong.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: debbcc3c52f84c84f8bab6ef1eb997eb
+    m_Address: Assets/Sounds/bonang/bonang-2653-5.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6813b3b727c75742bb70e4a7cde1f92
+    m_Address: Assets/Sounds/bonang/bonang-27tgt.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e745412067d91fe4ebb2ed3dd87f26e1
+    m_Address: Assets/Sounds/bonang/bonang7highshort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e79aa63e686eb774ea8d61c3a42b39cd
+    m_Address: Assets/Sounds/bonang/bonang6lowshort.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea4f8f413f6a8f740af575c4c37e2a6b
+    m_Address: Assets/Sounds/bonang/bonang-2653-3.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed6ece8aabe4c3a44bfe95099223b99e
+    m_Address: Assets/Sounds/bonang/bonang5highlong.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f33ba7fd854b46c41bf9619a72fe6dc9
+    m_Address: Assets/Sounds/bonang/bonang3highlong.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bonang
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 7c92e29bd0d6a1f418ed7b83011ce308, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 0f63b5985ea26324e97292c954e867e9, type: 2}
+    - {fileID: 11400000, guid: 31139f1f3db24a24eb8303a5cd032de3, type: 2}

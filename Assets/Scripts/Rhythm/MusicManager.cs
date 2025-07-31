@@ -88,11 +88,16 @@ public class MusicManager : MonoBehaviour
     }
 
     IEnumerator DelayStartSong() {
-        yield return new WaitForSeconds(songStartDelay);
+        if (musicSource.clip.loadState != AudioDataLoadState.Loaded) {
+            musicSource.clip.LoadAudioData();  // Trigger load
+            while (musicSource.clip.loadState != AudioDataLoadState.Loaded)
+                yield return null;
+        }
 
-        //Start the music
-        musicSource.Play();
-        songStarted = true;
+    yield return new WaitForSeconds(songStartDelay);
+    musicSource.Play();
+    songStarted = true;
+    yield return null;
     }
 
     public float GetSongPos() {

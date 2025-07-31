@@ -22,10 +22,31 @@
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     },
     {
+        "key": "bonang",
+        "type": "music",
+        "title": "Lagu Gugur Gunung",
+        "subtitle": "Bahagian Bonang Barung",
+        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+    },
+    {
         "key": "story1",
         "type": "story",
         "title": "Story-1",
         "subtitle": "A story",
+        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+    },
+    {
+        "key": "story2",
+        "type": "story",
+        "title": "Story-2",
+        "subtitle": "A story: Electric Boogaloo",
+        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+    },
+    {
+        "key": "story3",
+        "type": "story",
+        "title": "Story-3",
+        "subtitle": "Another one",
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     }
 ]
