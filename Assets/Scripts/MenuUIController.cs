@@ -31,7 +31,7 @@ public class MenuUIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RhythmGameLoader.Instance.fadeToBlack += FadeToBlack;
+
 
         nodePanel.gameObject.SetActive(false);
         nodePanelPos = nodePanel.anchoredPosition;
@@ -120,6 +120,7 @@ public class MenuUIController : MonoBehaviour
 
     public void LoadRhythmLevel(string mapName)
     {
+        RhythmGameLoader.Instance.fadeToBlack += FadeToBlack;
         Debug.Log("loading rhythm");
         loadingPanel.gameObject.SetActive(true);
         loadingPanel.alpha = 0f;
@@ -128,8 +129,12 @@ public class MenuUIController : MonoBehaviour
         }); 
     }
 
-    public void LoadStoryLevel(string name) {
-        Debug.Log("loading story");
+    public void LoadStoryLevel(string storyFile) {
+        loadingPanel.gameObject.SetActive(true);
+        loadingPanel.alpha = 0f;
+        loadingPanel.DOFade(1f, 0.4f).OnComplete(()=> {
+            StoryLoader.Instance.LoadStoryScene(storyFile);
+        }); 
     }
 
     public void FadeToBlack() {

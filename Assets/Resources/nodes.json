@@ -29,9 +29,9 @@
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     },
     {
-        "key": "story1",
+        "key": "teststory",
         "type": "story",
-        "title": "Story-1",
+        "title": "Test Story",
         "subtitle": "A story",
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     },
