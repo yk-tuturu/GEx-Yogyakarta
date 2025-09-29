@@ -66,22 +66,30 @@ public class TooltipController : MonoBehaviour
 
         AdjustTextSize(titleText, titleRect, maxWidth, maxFontSize, minFontSize);
 
+        // subtitle font should always be smaller than the title font 
         maxSubFontSize = Mathf.Round(titleText.fontSize * 0.75f);
         AdjustTextSize(subtitleText, subtitleRect, maxWidth, maxSubFontSize, minSubFontSize);
 
+        // set the title text to an offset below the center of the screen 
         Vector3 ogPos = new Vector3(0, 0, 0);
         titleRect.anchoredPosition = new Vector3(ogPos.x, ogPos.y - offset, ogPos.z);
         
+        // set the subtitle to be exactly below the title textbox (adjust for height of both textboxes) + some potential spacing 
         float subtitleY = titleRect.anchoredPosition.y - titleRect.rect.height / 2f - subtitleRect.rect.height / 2f - subtitleSpacing;
         subtitleRect.anchoredPosition = new Vector3(ogPos.x, subtitleY, ogPos.z);
 
+        // set the width and height of the backing panel 
+        // width is just the max of title or subtitle 
+        // height add the heights together + padding
         float panelWidth = Mathf.Max(titleRect.rect.width, subtitleRect.rect.width) + horizontalPadding;
         float panelHeight = titleRect.rect.height + subtitleRect.rect.height + verticalPadding;
 
+        // position the panel to be exactly in the middle of both the title and subtitle heights 
         float topEdge = titleRect.anchoredPosition.y + titleRect.rect.height / 2f;
         float bottomEdge = subtitleRect.anchoredPosition.y - subtitleRect.rect.height / 2f;
         float panelY = topEdge + (bottomEdge - topEdge) / 2f;
 
+        // set pos and size
         panel.anchoredPosition = new Vector3(ogPos.x, panelY, ogPos.z);
 
         panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, panelWidth);
@@ -92,6 +100,7 @@ public class TooltipController : MonoBehaviour
         text.enableAutoSizing = false;
         text.fontSize = maxFontSize;
         
+        // forcibly reduce text size until its either within the allowed width or we've reached the min font size 
         while (true) {
             text.ForceMeshUpdate();
             
@@ -100,16 +109,15 @@ public class TooltipController : MonoBehaviour
             text.fontSize -= 1f;
         }
 
-        
+        // set the width of the textbox to this preferred width 
         float newWidth = Mathf.Min(text.preferredWidth, maxWidth);
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
 
+        // refresh everything before setting height 
         text.ForceMeshUpdate();
         LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
 
         float newHeight = text.preferredHeight;
-
-        Debug.Log(newHeight);
         
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
 
