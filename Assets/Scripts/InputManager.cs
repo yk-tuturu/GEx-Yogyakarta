@@ -77,7 +77,5 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public void CheckRhythmHold(int lane_id) {
-
-    }
+    
 }

@@ -29,10 +29,10 @@
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     },
     {
-        "key": "teststory",
+        "key": "story1",
         "type": "story",
-        "title": "Test Story",
-        "subtitle": "A story",
+        "title": "A day at the carpenter's",
+        "subtitle": "Story-1",
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     },
     {
@@ -48,6 +48,13 @@
         "title": "Story-3",
         "subtitle": "Another one",
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+    },
+    {
+        "key": "kendang",
+        "type": "music",
+        "title": "Lagu Gugur Gunung",
+        "subtitle": "Bahagian Kendang",
+        "description":"This is a filler description text. This will give a brief description of the instrument used in this level" 
     }
 ]
 }

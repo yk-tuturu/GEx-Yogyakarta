@@ -1,24 +1,24 @@
-Pak Cik
+Pak
 enterleft pak 2
 pak:0:true
 This is a test story 1
-Mak Cik
+Mbah
 enterright mak 8
 pak:0:true|mak:0:false
 This is a test story 2
-Pak Cik
+Pak
 
 pak:1:true|mak:0:false
 I am changing poses
-Mak Cik
+Mbah
 
 pak:1:true|mak:1:true
 I am flipping
-Pak Cik
+Pak
 move pak 4
 pak:1:true|mak:1:true
 I am moving forward
-Mak Cik
+Mbah
 exitright mak
 pak:1:true|mak:1:true
 I am leaving

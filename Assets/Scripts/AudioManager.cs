@@ -33,6 +33,8 @@ public class AudioManager : MonoBehaviour
                 soundDict[clip.name] = clip;
             }
         }
+
+        source.volume = PlayerPrefManager.Instance.GetVolume() / 100f;
     }
 
     // Update is called once per frame
@@ -48,5 +50,9 @@ public class AudioManager : MonoBehaviour
         }
 
         source.PlayOneShot(soundDict[clipName]);
+    }
+
+    public void SetVolume(int value) {
+        source.volume = value / 100f;
     }
 }

@@ -35,6 +35,7 @@ public class MusicManager : MonoBehaviour
 
     public bool songStarted = false;
     public bool songEnded = false;
+    public bool isPaused = false;
 
     public event Action onSongEnded;
 
@@ -48,6 +49,7 @@ public class MusicManager : MonoBehaviour
         //Load the AudioSource attached to the Conductor GameObject
         musicSource = GetComponent<AudioSource>();
         musicSource.clip = RhythmGameLoader.Instance.bgm;
+        musicSource.volume = PlayerPrefManager.Instance.GetVolume() / 100f;
 
         songStartDelay += MapDataManager.Instance.delay;
 
@@ -61,12 +63,15 @@ public class MusicManager : MonoBehaviour
         songPosition = -songStartDelay;
 
         StartCoroutine(DelayStartSong());
+
+        PauseManager.Instance.onPause += OnPause;
+        PauseManager.Instance.onUnpause += OnUnpause;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (songEnded) return; 
+        if (songEnded || isPaused) return; 
 
         if (!songStarted) {
             songPosition += Time.deltaTime; 
@@ -106,5 +111,15 @@ public class MusicManager : MonoBehaviour
 
     public float GetSongPosInBeats() {
         return (float)GetSongPos() / secPerBeat;
+    }
+
+    void OnPause() {
+        isPaused = true;
+        musicSource.Pause();
+    }
+
+    void OnUnpause() {
+        isPaused = false;
+        musicSource.Play();
     }
 }

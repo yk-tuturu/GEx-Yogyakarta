@@ -24,12 +24,6 @@ public class JudgementLine : MonoBehaviour
         InputManager.Instance.OnRhythmLaneInput -= OnLaneInput;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddToLane(Note note) {
         lanes[note.lane_id].Enqueue(note);
         note.OnDespawnEvent += OnDespawnNote;
@@ -62,6 +56,10 @@ public class JudgementLine : MonoBehaviour
     }
 
     void OnLaneInput(int input_id) {
+        if (PauseManager.Instance.isPaused) {
+            return;
+        }
+        
         Queue<Note> queue = lanes[input_id];
         laneUiManager.TriggerLaneHighlight(input_id);
 

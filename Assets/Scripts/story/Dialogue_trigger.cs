@@ -11,14 +11,11 @@ public class Dialogue_trigger : MonoBehaviour
     public List<Dialogue> story = new List<Dialogue>();
     public DialogueManager dialogueManager;
 
+    public string filename; 
+
     void Start()
     {
-        if (StoryLoader.Instance) {
-            TriggerDialogue(StoryLoader.Instance.storyFile);
-        } else {
-            Debug.Log("story loader not found");
-            TriggerDialogue("teststory");
-        }
+        TriggerDialogue(filename);
     }
 
     public void TriggerDialogue(string filename)
@@ -45,64 +42,10 @@ public class Dialogue_trigger : MonoBehaviour
 
             while ((line = sr.ReadLine()) != null)
             {
-                if (counter == 1)
-                {
-                    temp.speaker = line;
-                } 
-                else if (counter == 2) {
-                    if (line == "") {
-                        counter++;
-                        temp.moveData = new MoveCommand[0];
-                        continue;
-                    }
-
-                    string[] moveStrings = line.Split('|');
-                    temp.moveData = new MoveCommand[moveStrings.Length];
-
-                    for (int i = 0; i < moveStrings.Length; i++) {
-                        MoveCommand move = new MoveCommand();
-                        string[] moveArray = moveStrings[i].Split(' ');
-
-                        move.command = moveArray[0];
-                        move.spriteTarget = moveArray[1];
-                        string[] args = new string[moveArray.Length - 2];
-                        Array.Copy(moveArray, 2, args, 0, moveArray.Length - 2);
-                        move.args = args;
-
-                        temp.moveData[i] = move;
-                    }
-                }
-                else if (counter == 3) {
-                    if (line == "") {
-                        counter++;
-                        temp.spriteData = new SpriteData[0];
-                        continue;
-                    }
-
-                    string[] spriteStrings = line.Split('|');
-                    temp.spriteData = new SpriteData[spriteStrings.Length];
-
-                    for (int i = 0; i < spriteStrings.Length; i++) {
-                        string[] parts = spriteStrings[i].Split(':');
-                        SpriteData sprite = new SpriteData();
-
-                        sprite.spriteTarget = parts[0];
-                        sprite.spriteIndex = int.Parse(parts[1]);
-                        sprite.flipped = parts[2]=="true";
-
-                        temp.spriteData[i] = sprite;
-
-                    }
-                }
-                else if (counter == 4)
-                {
-                    temp.sentence = line;
-                    story.Add(temp);
-                    temp = new Dialogue();
-                    counter = 0;
-                    
-                }
-                counter++;
+                temp.speaker = "";
+                temp.sentence = line;
+                story.Add(temp);
+                temp = new Dialogue();
             }
         }
 

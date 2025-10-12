@@ -21,6 +21,8 @@ public class MapDataManager : MonoBehaviour
 
     public Dictionary<string, string> generalInfo = new Dictionary<string, string>();
 
+    public float timingOffset = -3f;
+
     void Awake() {
         if (Instance != null && Instance != this)
         {
@@ -33,9 +35,13 @@ public class MapDataManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    void Start() {
+        timingOffset = PlayerPrefManager.Instance.GetOffset();
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        if (scene.name == "rhythm") {
-            MusicManager.Instance.onSongEnded += Reset;
+        if (scene.name == "score" || scene.name == "menu") {
+            Reset();
         }
     }
 
@@ -44,6 +50,7 @@ public class MapDataManager : MonoBehaviour
     }
 
     public void ReadMapFile(string filename) {
+        timingOffset = PlayerPrefManager.Instance.GetOffset();
         TextAsset file = (TextAsset)Resources.Load("Maps/" + filename);
 
         using (StringReader sr = new StringReader(file.text))
@@ -62,7 +69,7 @@ public class MapDataManager : MonoBehaviour
 
                 if (section == "General") {
                     string[] info = line.Split(":");
-                    generalInfo.Add(info[0], info[1]);
+                    generalInfo[info[0]] = info[1];
                 } 
                 
                 else if (section == "HitObject") {
@@ -70,7 +77,7 @@ public class MapDataManager : MonoBehaviour
                     string[] info = line.Split(",");
                     temp.id = counter;
                     temp.lane = Int32.Parse(info[0]);
-                    temp.targetTime = float.Parse(info[1], CultureInfo.InvariantCulture);
+                    temp.targetTime = float.Parse(info[1], CultureInfo.InvariantCulture) - (timingOffset / 1000);
                     temp.hitsound = info[2];
                     mapData.Enqueue(temp);
 
@@ -103,7 +110,6 @@ public class MapDataManager : MonoBehaviour
     }
 
     public void Reset() {
-        MusicManager.Instance.onSongEnded -= Reset;
         mapData = new Queue<HitObjectData>();
         generalInfo.Clear();
         totalHitObjectCount = 0;

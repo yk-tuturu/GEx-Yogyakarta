@@ -19,14 +19,18 @@ public class NoteSpawner : MonoBehaviour
 
     public List<Transform> positionMarkers;
 
+    public float timingOffset;
+
     // Start is called before the first frame update
     void Start()
     {
+        scrollSpeed = PlayerPrefManager.Instance.GetScroll();
+
         foreach (Transform child in positionMarkersParent) {
             positionMarkers.Add(child);
         }
 
-        spawnOffset = 13720f / (scrollSpeed * 1000);
+        spawnOffset = 10000f / (scrollSpeed * 1000);
     }
 
     // Update is called once per frame

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: kendang
+  m_EditorClassIdentifier: 
+  m_GroupName: kendang
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 23bb109f27bc44541af9bc50fbf7eeb7
+  m_SerializeEntries:
+  - m_GUID: 1ace36c78a7260346bf4b26b008ee0d8
+    m_Address: Assets/Sounds/kendang/kendang-p.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - kendang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 242c0e382a865e84c8d9d586066345a9
+    m_Address: Assets/Sounds/kendang/kendang-t.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - kendang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 293f79aff04730f4d8ca66bb30989464
+    m_Address: Assets/Sounds/kendang/kendang-t-roll.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - kendang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e24f84cbd7875c4aa9ee65985f1a6b9
+    m_Address: Assets/Sounds/kendang/kendang-b.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - kendang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9373a93ab354ee942bbb42bfab354ff2
+    m_Address: Assets/Sounds/kendang/kendang-b-beat.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - kendang
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8b9cdea25acb70498002a5b56b90324
+    m_Address: Assets/Sounds/kendang/kendang-t-intro.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - kendang
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 7c92e29bd0d6a1f418ed7b83011ce308, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 9833e8b1dbab7fc42b3d81bd4c7fe7ca, type: 2}
+    - {fileID: 11400000, guid: 84011f2959d9879439c7753606c6bb1b, type: 2}

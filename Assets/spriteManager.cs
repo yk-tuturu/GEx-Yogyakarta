@@ -17,7 +17,6 @@ public class SpriteManager : MonoBehaviour
         foreach (GameObject sprite in allSprites) {
             spriteDict.Add(sprite.gameObject.name, sprite);
         }
-
     }
 
     // Update is called once per frame
@@ -26,80 +25,103 @@ public class SpriteManager : MonoBehaviour
         
     }
 
-    public void Process(MoveCommand[] moveData, SpriteData[] spriteData) {
-        Dictionary<string, SpriteData> spriteInfoDict = new Dictionary<string, SpriteData>();
-        foreach (SpriteData spr in spriteData) {
-            spriteInfoDict.Add(spr.spriteTarget, spr);
+    public void AddSprite(string name, float x, float y, int index, bool flip, bool active) {
+        if (!spriteDict.ContainsKey(name)) {
+            Debug.Log("sprite not found!");
+            return;
         }
 
-        foreach(MoveCommand move in moveData) {
-            string command = move.command;
-            
-            
-            if (command == "enterleft") {
-                string name = move.spriteTarget;
+        GameObject newSprite = Instantiate(spriteDict[name], new Vector3(0, 0, 0), Quaternion.identity); 
+        
+        StorySprite spriteScript = newSprite.GetComponent<StorySprite>();
+        spriteScript.Init(x, y, index, flip);
+        activeSprite.Add(name, spriteScript);
 
-                Debug.Log(command);
-                GameObject newSprite = Instantiate(spriteDict[name]);
-                
-                StorySprite spriteScript = newSprite.GetComponent<StorySprite>();
-                spriteScript.InitSprite(spriteInfoDict[name]);
-                
-                
-                int pointIndex = int.Parse(move.args[0]);
-                spriteScript.EnterLeft(points[pointIndex].position);
+        newSprite.SetActive(active);
+    }
 
-                activeSprite.Add(name, spriteScript);
-            } else if (command == "enterright") {
-                string name = move.spriteTarget;
-                GameObject newSprite = Instantiate(spriteDict[name]);
-                StorySprite spriteScript = newSprite.GetComponent<StorySprite>();
-                spriteScript.InitSprite(spriteInfoDict[name]);
-                
-                int pointIndex = int.Parse(move.args[0]);
-                spriteScript.EnterRight(points[pointIndex].position);
-
-                activeSprite.Add(name, spriteScript);
-            } else if (command == "move") {
-                string name = move.spriteTarget; 
-
-                int pointIndex = int.Parse(move.args[0]);
-                activeSprite[name].Move(points[pointIndex].position);
-            } else if (command == "exitright") {
-                string name = move.spriteTarget; 
-
-                StorySprite sprite = activeSprite[name];
-                sprite.onExitEnd += onExited;
-                activeSprite[name].ExitRight();
-            }
+    public StorySprite GetSprite(string name) {
+        if (!activeSprite.ContainsKey(name)) {
+            Debug.Log("this sprite is not active!" + name);
+            return null;
         }
 
-        foreach(SpriteData data in spriteData) {
-            string name = data.spriteTarget;
+        return activeSprite[name];
+    }
 
-            if (activeSprite.ContainsKey(name)) {
-                StorySprite sprite = activeSprite[name];
+    // public void Process(MoveCommand[] moveData, SpriteData[] spriteData) {
+    //     Dictionary<string, SpriteData> spriteInfoDict = new Dictionary<string, SpriteData>();
+    //     foreach (SpriteData spr in spriteData) {
+    //         spriteInfoDict.Add(spr.spriteTarget, spr);
+    //     }
 
-                sprite.Flip(data.flipped);
-                sprite.SetSprite(data.spriteIndex);
-            }
+    //     foreach(MoveCommand move in moveData) {
+    //         string command = move.command;
             
-        }
-    }
+    //         if (command == "enterleft") {
+    //             string name = move.spriteTarget;
 
-    public void onExited(string name) {
-        StorySprite sprite = activeSprite[name];
-        sprite.onExitEnd -= onExited;
+    //             Debug.Log(command);
+    //             GameObject newSprite = Instantiate(spriteDict[name]);
+                
+    //             StorySprite spriteScript = newSprite.GetComponent<StorySprite>();
+    //             spriteScript.InitSprite(spriteInfoDict[name]);
+                
+                
+    //             int pointIndex = int.Parse(move.args[0]);
+    //             spriteScript.EnterLeft(points[pointIndex].position);
 
-        activeSprite.Remove(name);
-        Destroy(sprite.gameObject);
-    }
+    //             activeSprite.Add(name, spriteScript);
+    //         } else if (command == "enterright") {
+    //             string name = move.spriteTarget;
+    //             GameObject newSprite = Instantiate(spriteDict[name]);
+    //             StorySprite spriteScript = newSprite.GetComponent<StorySprite>();
+    //             spriteScript.InitSprite(spriteInfoDict[name]);
+                
+    //             int pointIndex = int.Parse(move.args[0]);
+    //             spriteScript.EnterRight(points[pointIndex].position);
 
-    public string GetCommand(string str) {
-        return str.Split(" ")[0];
-    }
+    //             activeSprite.Add(name, spriteScript);
+    //         } else if (command == "move") {
+    //             string name = move.spriteTarget; 
 
-    public string GetSpriteTarget(string str) {
-        return str.Split(" ")[1];
-    }
+    //             int pointIndex = int.Parse(move.args[0]);
+    //             activeSprite[name].Move(points[pointIndex].position);
+    //         } else if (command == "exitright") {
+    //             string name = move.spriteTarget; 
+
+    //             StorySprite sprite = activeSprite[name];
+    //             sprite.onExitEnd += onExited;
+    //             activeSprite[name].ExitRight();
+    //         }
+    //     }
+
+    //     foreach(SpriteData data in spriteData) {
+    //         string name = data.spriteTarget;
+
+    //         if (activeSprite.ContainsKey(name)) {
+    //             StorySprite sprite = activeSprite[name];
+
+    //             sprite.Flip(data.flipped);
+    //             sprite.SetSprite(data.spriteIndex);
+    //         }
+            
+    //     }
+    // }
+
+    // public void onExited(string name) {
+    //     StorySprite sprite = activeSprite[name];
+    //     sprite.onExitEnd -= onExited;
+
+    //     activeSprite.Remove(name);
+    //     Destroy(sprite.gameObject);
+    // }
+
+    // public string GetCommand(string str) {
+    //     return str.Split(" ")[0];
+    // }
+
+    // public string GetSpriteTarget(string str) {
+    //     return str.Split(" ")[1];
+    // }
 }

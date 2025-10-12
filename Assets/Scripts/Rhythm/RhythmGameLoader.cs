@@ -38,6 +38,10 @@ public class RhythmGameLoader : MonoBehaviour
         if (scene.name == "rhythm") {
             MusicManager.Instance.onSongEnded += OnSongEnded;
         }
+
+        if (scene.name == "menu") {
+            CleanUp();
+        }
     }
 
     public void LoadRhythmScene(string mapName) {
@@ -112,5 +116,16 @@ public class RhythmGameLoader : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void CleanUp() {
+        if (hitsoundHandle.IsValid())
+            Addressables.Release(hitsoundHandle);  // Releases all hitsounds
+
+        if (bgmHandle.IsValid())
+            Addressables.Release(bgmHandle);       // Releases the BGM clip
+
+        hitsounds.Clear();
+        bgm = null;
     }
 }

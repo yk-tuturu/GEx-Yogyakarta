@@ -20,7 +20,7 @@ public class Note : MonoBehaviour
 
     public bool canHit = false;
 
-    
+    public bool isPaused = false;
 
     public delegate void OnDespawn(Note note);
     public event OnDespawn OnDespawnEvent;
@@ -28,6 +28,8 @@ public class Note : MonoBehaviour
     // buncha debug stuff
     public delegate void AutoHit(Note note);
     public event AutoHit OnAutoHit;
+
+    private Tween moveTween;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +41,10 @@ public class Note : MonoBehaviour
 
         float moveTime = (currY - despawnY) / speed;
 
-        transform.DOMoveY(despawnY, moveTime).SetEase(Ease.Linear);
+        moveTween = transform.DOMoveY(despawnY, moveTime).SetEase(Ease.Linear);
+
+        PauseManager.Instance.onPause += OnPause;
+        PauseManager.Instance.onUnpause += OnUnpause;
     }
 
     // Update is called once per frame
@@ -89,5 +94,15 @@ public class Note : MonoBehaviour
 
     void OnDestroy() {
         DOTween.Kill(transform);
+    }
+
+    void OnPause() {
+        isPaused = true;
+        moveTween.Pause();
+    }
+
+    void OnUnpause() {
+        isPaused = false;
+        moveTween.Play();
     }
 }

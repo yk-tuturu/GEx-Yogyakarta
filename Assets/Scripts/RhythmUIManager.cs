@@ -26,6 +26,10 @@ public class RhythmUIManager : MonoBehaviour
         RhythmGameLoader.Instance.scoreScreenTransition += ScoreScreenTransition;
     }
 
+    void OnDestroy() {
+        RhythmGameLoader.Instance.scoreScreenTransition -= ScoreScreenTransition;
+    }
+
     public void AnimateTitleCard() {
         Vector2 originalPos = titlePanel.anchoredPosition;
         titlePanel.anchoredPosition = new Vector2(originalPos.x, originalPos.y + offset);

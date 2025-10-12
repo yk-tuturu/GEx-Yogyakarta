@@ -69,7 +69,7 @@ public class DialogueManager : MonoBehaviour
 
         currentLine = sentences.Dequeue();
         speakerText.text = currentLine.speaker;
-        spriteManager.Process(currentLine.moveData, currentLine.spriteData);
+        //spriteManager.Process(currentLine.moveData, currentLine.spriteData);
 
         currentlyInDialogue = true;
         StopAllCoroutines();
