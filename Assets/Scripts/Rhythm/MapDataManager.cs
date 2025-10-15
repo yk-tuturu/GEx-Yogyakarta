@@ -18,6 +18,8 @@ public class MapDataManager : MonoBehaviour
     public string subtitle;
     public string songFilename;
     public int delay;
+    public string storyFilename;
+    public string instrument;
 
     public Dictionary<string, string> generalInfo = new Dictionary<string, string>();
 
@@ -79,6 +81,12 @@ public class MapDataManager : MonoBehaviour
                     temp.lane = Int32.Parse(info[0]);
                     temp.targetTime = float.Parse(info[1], CultureInfo.InvariantCulture) - (timingOffset / 1000);
                     temp.hitsound = info[2];
+
+                    if (generalInfo.ContainsKey("Instrument")) {
+                        temp.instrumentIndex = Util.ParseInt(info[3]);
+                        Debug.Log(temp.instrumentIndex);
+                    }
+
                     mapData.Enqueue(temp);
 
                     counter++;
@@ -93,6 +101,8 @@ public class MapDataManager : MonoBehaviour
         subtitle = generalInfo["Subtitle"];
         songFilename = generalInfo["Audio"];
         delay = int.Parse(generalInfo["Delay"]);
+        storyFilename = generalInfo["Story"];
+        instrument = generalInfo.ContainsKey("Instrument") ? generalInfo["Instrument"] : "";
     }
 
     public bool IsMapEmpty() {

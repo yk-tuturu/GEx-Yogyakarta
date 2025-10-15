@@ -12,7 +12,7 @@ public class NoteSpawner : MonoBehaviour
     public float scrollSpeed; 
     public float spawnOffset; 
 
-    public GameObject notePrefab;
+    public GameObject[] notesPrefab;
 
     public JudgementLine judgementLine; 
     public Transform positionMarkersParent;
@@ -43,7 +43,7 @@ public class NoteSpawner : MonoBehaviour
 
         while (nextNote.targetTime - songPos < spawnOffset) {
             MapDataManager.Instance.Dequeue();
-            SpawnNote(nextNote.id, nextNote.lane, nextNote.targetTime, nextNote.hitsound);
+            SpawnNote(nextNote.id, nextNote.lane, nextNote.targetTime, nextNote.hitsound, nextNote.instrumentIndex);
 
             if (MapDataManager.Instance.IsMapEmpty()) {
                 break;
@@ -52,15 +52,26 @@ public class NoteSpawner : MonoBehaviour
         } 
     }
 
-    void SpawnNote(int id, int lane_id, float timing, string hitsound) {
+    void SpawnNote(int id, int lane_id, float timing, string hitsound, int instrumentIndex) {
         Vector3 notePosition = positionMarkers[lane_id].position;
 
-        GameObject note = Instantiate(notePrefab, notePosition, Quaternion.identity);
+
+        GameObject note;
+        
+        if (lane_id == 0 || lane_id == 2 || lane_id == 4 || lane_id == 6) {
+            note = Instantiate(notesPrefab[0], notePosition, Quaternion.identity);
+        } else if (lane_id == 1 || lane_id == 5) {
+            note = Instantiate(notesPrefab[1], notePosition, Quaternion.identity);
+        } else {
+            note = Instantiate(notesPrefab[2], notePosition, Quaternion.identity);
+        }
+         
         Note noteScript = note.GetComponent<Note>();
         noteScript.id = id;
         noteScript.targetTime = timing; 
         noteScript.lane_id = lane_id;
         noteScript.hitsound = hitsound;
+        noteScript.instrumentIndex = instrumentIndex;
 
         judgementLine.AddToLane(noteScript);
     }

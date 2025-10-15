@@ -37,6 +37,11 @@ public class LaneUIManager : MonoBehaviour
     public float currAcc = 100f;
     public float accStepSize;
 
+    public CanvasGroup cg;
+
+    public Instrument[] instruments;
+    public Instrument currInstrument;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +66,17 @@ public class LaneUIManager : MonoBehaviour
         comboCounter.text = "";
 
         judgement.gameObject.SetActive(false);
+
+        foreach (Instrument ins in instruments) {
+            ins.gameObject.SetActive(false);
+        }
+
+        string instrumentName = MapDataManager.Instance.instrument;
+        if (instrumentName == "saron") {
+            instruments[0].gameObject.SetActive(true);
+        }
+
+        currInstrument = instruments[0];
     }
 
     void OnDestroy() {
@@ -83,6 +99,39 @@ public class LaneUIManager : MonoBehaviour
         }
 
         accText.SetText("{0:0.00}%", currAcc);
+    }
+
+    public void SetHidden() {
+        foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
+        {
+            Color color = sr.color;
+            color.a = 0f;
+            sr.color = color;
+        }
+
+        cg.alpha = 0f;
+    }
+
+    public Sequence FadeIn(float duration) {
+        Sequence seq = DOTween.Sequence();
+        int counter = 0;
+        foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
+        {
+            if (counter == 0) {
+                seq.Append(sr.DOFade(1f, duration));
+            } else {
+                seq.Join(sr.DOFade(1f, duration));
+            }
+            counter++;
+        }
+
+        seq.Join(cg.DOFade(1f, duration));
+
+        return seq;
+    }
+
+    public void PlayInstrument(int index) {
+        currInstrument.Play(index);
     }
 
     public void TriggerLaneHighlight(int lane) {

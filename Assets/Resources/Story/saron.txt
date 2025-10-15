@@ -1,0 +1,11 @@
+The Javanese gamelan is composed of various instruments, and each instrument have their own roles in constructing the layers of a song. 
+The first, and most important class of instruments are the <b>balungan</b>, which is responsible for creating the main melodic lines. 
+If we imagine gamelan music as a building, the balungan would be the pillars supporting its structure. 
+Out of all the balungan instruments, the <b>saron</b> is the most well-known and most commonly used. 
+It is played much like a xylophone, where each note is struck with a mallet to produce a crisp percussive tone. 
+It is simple to play, yet skill and coordination is required to dampen previous notes before striking a new one, preventing dissonance in the music. 
+The saron is composed of only 7 keys. There are different variations of saron, such as saron demung, saron barung and saron peking, that are tuned to different octaves. 
+They are all generally played together to produce a layered sound. 
+Thus we will now play the main melody of "Lagu Gugur Gunung". 
+It will be a simple melody.
+One that awaits other instruments to fill in the gaps in its orchestration.

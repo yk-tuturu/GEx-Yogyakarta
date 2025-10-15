@@ -10,6 +10,8 @@ public class JudgementLine : MonoBehaviour
     public LaneUIManager laneUiManager;
     public bool auto = false;
 
+    public DialogueManager dialogueManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,13 +52,14 @@ public class JudgementLine : MonoBehaviour
         laneUiManager.UpdateScoreDisplay();
         laneUiManager.UpdateAccuracyDisplay();
 
+
         if (hitValue >= 0) {
             laneUiManager.LaneEmit(input_id);
         }
     }
 
     void OnLaneInput(int input_id) {
-        if (PauseManager.Instance.isPaused) {
+        if (PauseManager.Instance.isPaused || MusicManager.Instance.inDialogue) {
             return;
         }
         
@@ -70,6 +73,12 @@ public class JudgementLine : MonoBehaviour
             nextNote.OnDespawnEvent -= OnDespawnNote;
             int hitValue = nextNote.GetScore();
             bool isLastNote = nextNote.id == MapDataManager.Instance.totalHitObjectCount - 1;
+            
+            Debug.Log(nextNote.instrumentIndex);
+            if (nextNote.instrumentIndex != -1) {
+                laneUiManager.PlayInstrument(nextNote.instrumentIndex);
+            }
+
             queue.Dequeue();
             Destroy(nextNote.gameObject);
 

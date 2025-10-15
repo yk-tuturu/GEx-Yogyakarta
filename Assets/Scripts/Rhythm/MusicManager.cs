@@ -36,6 +36,8 @@ public class MusicManager : MonoBehaviour
     public bool songStarted = false;
     public bool songEnded = false;
     public bool isPaused = false;
+    public bool inDialogue = true;
+    public DialogueManager dialogueManager;
 
     public event Action onSongEnded;
 
@@ -62,16 +64,26 @@ public class MusicManager : MonoBehaviour
         songLength = musicSource.clip.length;
         songPosition = -songStartDelay;
 
-        StartCoroutine(DelayStartSong());
-
         PauseManager.Instance.onPause += OnPause;
         PauseManager.Instance.onUnpause += OnUnpause;
+        dialogueManager.OnDialogueEnd += StartMusic;
+    }
+
+    void OnDestroy() {
+        PauseManager.Instance.onPause -= OnPause;
+        PauseManager.Instance.onUnpause -= OnUnpause;
+        dialogueManager.OnDialogueEnd -= StartMusic;
+    }
+
+    public void StartMusic() {
+        inDialogue = false;
+        StartCoroutine(DelayStartSong());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (songEnded || isPaused) return; 
+        if (songEnded || isPaused || inDialogue) return; 
 
         if (!songStarted) {
             songPosition += Time.deltaTime; 

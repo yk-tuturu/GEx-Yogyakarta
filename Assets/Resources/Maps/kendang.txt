@@ -3,6 +3,7 @@ Audio:kendang.wav
 Title:Lagu Gugur Gunung
 Subtitle:Bahagian Kendang
 Delay:3
+Story:kendang
 [HitObject]
 1,2.625,kendang-t-intro
 2,3.0,kendang-t-intro

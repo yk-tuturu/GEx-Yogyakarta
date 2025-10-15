@@ -16,7 +16,12 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 5f4886a9699b96b4d901197b2935649f
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 0ac76eb1046a89b42bcb240e6826a419
+    m_Address: Assets/Sounds/BGM/saron-no-bgm.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7c92e29bd0d6a1f418ed7b83011ce308, type: 2}
   m_SchemaSet:

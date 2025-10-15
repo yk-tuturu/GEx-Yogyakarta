@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Events;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
+using System;
+using System.IO;  
+using System.Text;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -17,21 +18,39 @@ public class DialogueManager : MonoBehaviour
 
     public Dialogue currentLine;
 
-    public TextMeshProUGUI speakerText;
+    //public TextMeshProUGUI speakerText;
     public TextMeshProUGUI speechText;
     public GameObject dialoguePanel;
 
     public SpriteManager spriteManager;
-    public CanvasGroup loadingPanel;
+    //public CanvasGroup loadingPanel;
+
+    public event Action OnDialogueEnd;
+
+    public string filename;
+
+    public GameObject[] instruments;
 
     void Awake()
     {
         sentences = new Queue<Dialogue>();
     }
 
+    void Start() {
+        // get filename from mapdata
+        filename = MapDataManager.Instance.storyFilename;
+        if (filename == "saron") {
+            instruments[0].SetActive(true);
+        } else if (filename == "bonang") {
+            instruments[1].SetActive(true);
+        } else if (filename == "kendang") {
+            instruments[2].SetActive(true);
+        }
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && currentlyInDialogue)
+        if (Input.anyKeyDown && currentlyInDialogue)
         {
             if (currentlyTyping)
             {
@@ -46,15 +65,32 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(List<Dialogue> story)
+    public void ReadFile(string filename)
+    {
+        TextAsset file = (TextAsset)Resources.Load("Story/" + filename);
+
+        using (StringReader sr = new StringReader(file.text))
+        {
+            string line;
+            Dialogue temp = new Dialogue();
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                temp.speaker = "";
+                temp.sentence = line;
+                sentences.Enqueue(temp);
+                temp = new Dialogue();
+            }
+        }
+    }
+
+    public void StartDialogue()
     {
         sentences.Clear();
         dialoguePanel.SetActive(true);
         currentlyInDialogue = true;
 
-        foreach (Dialogue dialogue in story) {
-            sentences.Enqueue(dialogue);    
-        }
+        ReadFile(filename);
 
         DisplayNextSentence();
     }
@@ -68,7 +104,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         currentLine = sentences.Dequeue();
-        speakerText.text = currentLine.speaker;
+        //speakerText.text = currentLine.speaker;
         //spriteManager.Process(currentLine.moveData, currentLine.spriteData);
 
         currentlyInDialogue = true;
@@ -94,13 +130,9 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("End of conversation");
         currentlyInDialogue = false;
 
-        speakerText.text = "";
+        //speakerText.text = "";
         speechText.text = "";
 
-        loadingPanel.gameObject.SetActive(true);
-        loadingPanel.alpha = 0f;
-        loadingPanel.DOFade(1f, 0.4f).OnComplete(()=> {
-            SceneManager.LoadScene("menu");
-        });
+        OnDialogueEnd?.Invoke();
     }
 }

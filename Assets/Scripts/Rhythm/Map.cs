@@ -9,6 +9,7 @@ public class HitObjectData
     public float targetTime;
     public int lane; 
     public string hitsound;
+    public int instrumentIndex = -1;
 }
 
 

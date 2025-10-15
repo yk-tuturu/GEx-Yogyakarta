@@ -25,7 +25,7 @@ public class Dialogue_trigger : MonoBehaviour
         // fix this later
         UnityEvent onComplete = new UnityEvent();
 
-        dialogueManager.StartDialogue(story);
+        //dialogueManager.StartDialogue(story);
         Debug.Log("dialogueTriggered " + filename);
         story = new List<Dialogue>();
     }
@@ -37,7 +37,7 @@ public class Dialogue_trigger : MonoBehaviour
         using (StringReader sr = new StringReader(file.text))
         {
             string line;
-            int counter = 1;
+            //int counter = 1;
             Dialogue temp = new Dialogue();
 
             while ((line = sr.ReadLine()) != null)

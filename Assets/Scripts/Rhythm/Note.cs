@@ -9,6 +9,7 @@ public class Note : MonoBehaviour
     public float targetTime; 
     public int lane_id;
     public string hitsound;
+    public int instrumentIndex;
 
     public float perfectWindow = 0.05f; //50ms perfect 
     public float goodWindow = 0.12f; // 120ms good
@@ -74,19 +75,15 @@ public class Note : MonoBehaviour
 
         float songPos = MusicManager.Instance.GetSongPos();
         float hitError = Mathf.Abs(targetTime - songPos);
-        Debug.Log(hitError);
         
 
         if (hitError <= perfectWindow) {
-            Debug.Log("perfect");
             AudioManager.Instance.PlayOneShot(hitsound);
             return 300;
         } else if (hitError <= goodWindow) {
-            Debug.Log("good");
             AudioManager.Instance.PlayOneShot(hitsound);
             return 100;
         } else {
-            Debug.Log("miss");
             AudioManager.Instance.PlayOneShot("combobreak");
             return 0;
         }

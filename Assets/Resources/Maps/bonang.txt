@@ -3,6 +3,7 @@ Audio:bonang.wav
 Title:Lagu Gugur Gunung
 Subtitle:Bahagian Bonang Barung
 Delay:3
+Story:bonang
 [HitObject]
 1,0.0,bonang3lowshort
 0,0.375,bonang2lowshort

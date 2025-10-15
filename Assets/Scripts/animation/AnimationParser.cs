@@ -8,6 +8,7 @@ using System.Linq;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class AnimationParser : MonoBehaviour
 {
@@ -171,7 +172,7 @@ public class AnimationParser : MonoBehaviour
         seq.Append(titlePanel.DOAnchorPosY(originalPos.y, 1.2f)
              .SetEase(Ease.OutElastic, 1.1f, 0.7f));
         seq.Join(cg.DOFade(1f, 0.5f));
-        seq.AppendInterval(2f);
+        seq.AppendInterval(1.3f);
         seq.Append(titlePanel.DOAnchorPosY(originalPos.y + offset, 1f).SetEase(Ease.InCubic));
         seq.Join(cg.DOFade(0f, 0.7f));
         seq.Append(blackScreen.DOFade(0f, 0.4f));
@@ -181,7 +182,7 @@ public class AnimationParser : MonoBehaviour
 
     IEnumerator Play() {
         AnimateTitleCard();
-        yield return new WaitForSeconds(5.1f);
+        yield return new WaitForSeconds(4.4f);
 
         foreach(AnimationScene scene in scenes) {
             foreach(AnimationCommand command in scene.commands) {
@@ -191,6 +192,6 @@ public class AnimationParser : MonoBehaviour
             yield return new WaitForSeconds(scene.duration);
         }
 
-        yield return null;
+        SceneManager.LoadScene("menu");
     }
 }

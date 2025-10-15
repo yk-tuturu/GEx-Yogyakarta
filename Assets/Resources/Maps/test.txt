@@ -3,6 +3,7 @@ Audio:test.wav
 Title:Test
 Subtitle:It's just a test
 Delay:0
+Story:teststory
 [HitObject]
 4,0.0,drum-hitnormal
 5,0.5,drum-hitnormal
