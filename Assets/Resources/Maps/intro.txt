@@ -1,0 +1,7 @@
+[General]
+Audio:test.wav
+Title:Intro
+Subtitle: 
+Delay:0
+Story:intro
+[HitObject]

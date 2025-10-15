@@ -5,6 +5,7 @@
         "type": "music",
         "title": "Lagu Gugur Gunung",
         "subtitle": "Bahagian Saron",
+        "prereq": ["intro"],
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     },
     {
@@ -12,6 +13,7 @@
         "type": "music",
         "title": "Test Song",
         "subtitle": "test",
+        "prereq": [],
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     },
     {
@@ -19,6 +21,7 @@
         "type": "music",
         "title": "Charles",
         "subtitle": "Balloon",
+        "prereq": [],
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     },
     {
@@ -26,6 +29,7 @@
         "type": "music",
         "title": "Lagu Gugur Gunung",
         "subtitle": "Bahagian Bonang Barung",
+        "prereq": ["story2", "story3"],
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     },
     {
@@ -33,6 +37,7 @@
         "type": "story",
         "title": "A day at the carpenter's",
         "subtitle": "Story-1",
+        "prereq": ["intro"],
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     },
     {
@@ -40,6 +45,7 @@
         "type": "story",
         "title": "Story-2",
         "subtitle": "A story: Electric Boogaloo",
+        "prereq": ["saron"],
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     },
     {
@@ -47,6 +53,47 @@
         "type": "story",
         "title": "Story-3",
         "subtitle": "Another one",
+        "prereq": ["story1"],
+        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+    },
+    {
+        "key": "story4",
+        "type": "story",
+        "title": "Story-4",
+        "subtitle": "Another one",
+        "prereq": ["story1"],
+        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+    },
+    {
+        "key": "story5",
+        "type": "story",
+        "title": "Story-5",
+        "subtitle": "Another one",
+        "prereq": ["story4"],
+        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+    },
+    {
+        "key": "story6",
+        "type": "story",
+        "title": "Story-6",
+        "subtitle": "Another one",
+        "prereq": ["bonang"],
+        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+    },
+    {
+        "key": "story7",
+        "type": "story",
+        "title": "Story-7",
+        "subtitle": "Another one",
+        "prereq": ["story5"],
+        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+    },
+    {
+        "key": "intro",
+        "type": "music",
+        "title": "Intro",
+        "subtitle": "",
+        "prereq": [],
         "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     },
     {
@@ -54,7 +101,16 @@
         "type": "music",
         "title": "Lagu Gugur Gunung",
         "subtitle": "Bahagian Kendang",
+        "prereq": ["story6", "story7"],
         "description":"This is a filler description text. This will give a brief description of the instrument used in this level" 
+    },
+    {
+        "key": "final",
+        "type": "music",
+        "title": "Lagu Gugur Gunung",
+        "subtitle": "Semua Bahagian",
+        "prereq": ["kendang"],
+        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
     }
 ]
 }

@@ -44,3 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f7e785c3bc41a49a3a4d695ac24673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levels:
+  - intro
+  - saron
+  - bonang
+  - kendang
+  - story1
+  - story2
+  - story3
+  - story4
+  - story5
+  - story6
+  - story7
+  - test
+  - charles

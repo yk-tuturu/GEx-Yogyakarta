@@ -21,6 +21,7 @@ MonoBehaviour:
     m_Address: Assets/Sounds/drum-hitnormal.wav
     m_ReadOnly: 0
     m_SerializedLabels:
+    - intro
     - test
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0

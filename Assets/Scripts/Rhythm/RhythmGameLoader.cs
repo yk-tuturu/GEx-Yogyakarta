@@ -51,6 +51,7 @@ public class RhythmGameLoader : MonoBehaviour
 
     public void OnSongEnded() {
         MusicManager.Instance.onSongEnded -= OnSongEnded;
+        PlayerPrefManager.Instance.SetLevelCompleted(mapName);
         StartCoroutine(LoadScoreScreen());
     }
 

@@ -8,6 +8,7 @@ public class NodeData {
     public string type;
     public string title;
     public string subtitle;
+    public string[] prereq;
     public string description;
 }
 

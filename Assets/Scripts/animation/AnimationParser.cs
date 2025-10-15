@@ -192,6 +192,7 @@ public class AnimationParser : MonoBehaviour
             yield return new WaitForSeconds(scene.duration);
         }
 
+        PlayerPrefManager.Instance.SetLevelCompleted(filename);
         SceneManager.LoadScene("menu");
     }
 }

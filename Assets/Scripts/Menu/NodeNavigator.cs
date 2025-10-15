@@ -55,7 +55,7 @@ public class NodeNavigator : MonoBehaviour
     void OnEnterPressed() {
         MenuStateManager msm = MenuStateManager.Instance; 
 
-        if (msm.currentState == MenuState.Panel) return;
+        if (msm.currentState == MenuState.Panel || !msm.currentNode.unlocked) return;
 
         msm.ChangeState(MenuState.Panel);
     }
@@ -122,6 +122,7 @@ public class NodeNavigator : MonoBehaviour
             transform.DOMove(new Vector3(pos.x, pos.y, -10), 0.2f).SetEase(Ease.OutSine).OnComplete(()=> {
                 tooltip.ShowTooltip(currNode);
             });
+            AudioManager.Instance.PlayOneShot("nodeSfx", true, 0.7f);
         }
         
     }

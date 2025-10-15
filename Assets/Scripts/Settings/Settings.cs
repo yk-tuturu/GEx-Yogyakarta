@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour
 {
@@ -24,10 +25,12 @@ public class Settings : MonoBehaviour
     public void Open() {
         this.gameObject.SetActive(true);
         GetValues();
+        AudioManager.Instance.PlayOneShot("settingOpen");
     }
 
     public void Close() {
         this.gameObject.SetActive(false);
+        AudioManager.Instance.PlayOneShot("settingClose");
     }
 
     public void GetValues() {
@@ -38,5 +41,15 @@ public class Settings : MonoBehaviour
         volumeSlider.SetValue(volume);
         scrollPanel.SetValue(scroll);
         offsetPanel.SetValue(offset);
+    }
+
+    public void UnlockAll() {
+        PlayerPrefManager.Instance.UnlockAll();
+        SceneManager.LoadScene("menu");
+    }
+
+    public void ResetSave() {
+        PlayerPrefManager.Instance.ResetSave();
+        SceneManager.LoadScene("menu");
     }
 }

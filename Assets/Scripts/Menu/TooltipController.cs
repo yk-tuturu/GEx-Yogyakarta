@@ -28,6 +28,8 @@ public class TooltipController : MonoBehaviour
 
     public float musicOffset = 80f;
     public float storyOffset = 60f;
+
+    public Flowchart flowchart;
     
     // Start is called before the first frame update
     void Start()
@@ -55,8 +57,12 @@ public class TooltipController : MonoBehaviour
             offset = storyOffset;
         }
 
-        SetText(data.title, data.subtitle, offset);
-
+        if (!node.unlocked) {
+            SetText("Locked", "", offset);
+        } else {
+            SetText(data.title, data.subtitle, offset);
+        }
+        
         cg.alpha = 1f;
     }
 

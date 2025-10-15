@@ -43,11 +43,19 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public void PlayOneShot(string clipName) {
+    public void PlayOneShot(string clipName, bool pitchVariation = false, float volume = 1f) {
         if (!soundDict.ContainsKey(clipName)) {
             Debug.Log("audio clip not found!");
             return;
         }
+
+        if (pitchVariation) {
+            source.pitch = Random.Range(0.9f, 1.1f);
+        } else {
+            source.pitch = 1f;
+        }
+
+        source.volume = volume;
 
         source.PlayOneShot(soundDict[clipName]);
     }

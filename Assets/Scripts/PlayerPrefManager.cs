@@ -8,6 +8,7 @@ public class PlayerPrefManager : MonoBehaviour
     public static PlayerPrefManager Instance;
 
     public string[] levels = {
+        "intro",
         "saron",
         "bonang",
         "kendang",
@@ -17,7 +18,9 @@ public class PlayerPrefManager : MonoBehaviour
         "story4",
         "story5",
         "story6",
-        "story7"
+        "story7",
+        "test",
+        "charles"
     };
 
     void Awake() {
@@ -72,33 +75,33 @@ public class PlayerPrefManager : MonoBehaviour
         PlayerPrefs.SetInt("offset", offset);
     }
 
-    public void GetLevelCompletion(string key) {
+    public bool GetLevelCompletion(string key) {
         if (!levels.Contains(key)) {
             Debug.Log("level key not found!");
+            Debug.Log(key);
+            return false;
         }
-        PlayerPrefs.GetInt(key);
+        return PlayerPrefs.GetInt(key) == 1;
     }
 
     public void SetLevelCompleted(string key) {
         if (!levels.Contains(key)) {
             Debug.Log("level key not found!");
+            Debug.Log(key);
+            return;
         }
         PlayerPrefs.SetInt(key, 1);
     }
 
     public void ResetSave() {
        foreach(string key in levels) {
-            if (!PlayerPrefs.HasKey(key)) {
-                PlayerPrefs.SetInt(key, 0);
-            }
+            PlayerPrefs.SetInt(key, 0);
         } 
     }
 
     public void UnlockAll() {
         foreach(string key in levels) {
-            if (!PlayerPrefs.HasKey(key)) {
-                PlayerPrefs.SetInt(key, 1);
-            }
+            PlayerPrefs.SetInt(key, 1);
         } 
     }
 }

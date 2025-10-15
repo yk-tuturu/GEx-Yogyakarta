@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RhythmUIManager : MonoBehaviour
 {
@@ -57,6 +58,11 @@ public class RhythmUIManager : MonoBehaviour
     }
 
     public void OnDialogueEnd() {
+        if (MapDataManager.Instance.title == "Intro") {
+            EndIntro();
+            return;
+        }
+
         Sequence seq = DOTween.Sequence();
         seq.Append(dialoguePanel.DOFade(0f, 0.4f));
         
@@ -105,5 +111,18 @@ public class RhythmUIManager : MonoBehaviour
         blackScreen.gameObject.SetActive(true);
         blackScreen.alpha = 0f;
         blackScreen.DOFade(1f, 0.5f);
+    }
+
+    public void EndIntro() {
+        Sequence seq = DOTween.Sequence();
+        seq.Append(dialoguePanel.DOFade(0f, 0.4f));
+        blackScreen.gameObject.SetActive(true);
+        blackScreen.alpha = 0f;
+        seq.Append(blackScreen.DOFade(1f, 0.7f));
+        seq.OnComplete(()=>{
+            PlayerPrefManager.Instance.SetLevelCompleted("intro");
+            SceneManager.LoadScene("menu");
+        });
+        seq.Play();
     }
 }

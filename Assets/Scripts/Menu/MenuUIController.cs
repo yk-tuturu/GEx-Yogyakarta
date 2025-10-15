@@ -77,6 +77,7 @@ public class MenuUIController : MonoBehaviour
     void OnEnterPressed() {
         if (MenuStateManager.Instance.currentState != MenuState.Panel) return; 
 
+        AudioManager.Instance.PlayOneShot("nodeSfx");
         sidePanelButtons[panelActiveButton].Press();
     }
 
@@ -93,6 +94,8 @@ public class MenuUIController : MonoBehaviour
         
         string type = data.type;
         nodeTypeText.text = char.ToUpper(type[0]) + type.Substring(1) + " Node";
+
+        AudioManager.Instance.PlayOneShot("panelOpen");
     }
 
     public void HideNodePanel() {
