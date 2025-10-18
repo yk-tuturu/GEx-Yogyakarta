@@ -17,12 +17,14 @@ public class ScrollSpeedPanel : MonoBehaviour
     }
 
     public void Add() {
+        Debug.Log("add");
         scrollSpeed = Math.Min(30, scrollSpeed+1);
         scrollText.text = scrollSpeed.ToString();
         PlayerPrefManager.Instance.SetScroll(scrollSpeed);
     }
 
     public void Minus() {
+        Debug.Log("minus");
         scrollSpeed = Math.Max(1, scrollSpeed-1);
         scrollText.text = scrollSpeed.ToString();
         PlayerPrefManager.Instance.SetScroll(scrollSpeed);

@@ -40,6 +40,22 @@ public class SpriteManager : MonoBehaviour
         newSprite.SetActive(active);
     }
 
+    public void AddSprite(string name, float x, float y, int index, bool flip, bool active, float scale) {
+        if (!spriteDict.ContainsKey(name)) {
+            Debug.Log("sprite not found!");
+            return;
+        }
+
+        GameObject newSprite = Instantiate(spriteDict[name], new Vector3(0, 0, 0), Quaternion.identity); 
+        
+        StorySprite spriteScript = newSprite.GetComponent<StorySprite>();
+        spriteScript.Init(x, y, index, flip, scale);
+        activeSprite.Add(name, spriteScript);
+
+        newSprite.SetActive(active);
+        Debug.Log(activeSprite.Count);
+    }
+
     public StorySprite GetSprite(string name) {
         if (!activeSprite.ContainsKey(name)) {
             Debug.Log("this sprite is not active!" + name);

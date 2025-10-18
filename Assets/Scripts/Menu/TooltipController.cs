@@ -12,6 +12,7 @@ public class TooltipController : MonoBehaviour
     public RectTransform titleRect;
     public RectTransform subtitleRect;
     public RectTransform panel;
+    public Image panelImage;
 
     public CanvasGroup cg;
 
@@ -30,11 +31,16 @@ public class TooltipController : MonoBehaviour
     public float storyOffset = 60f;
 
     public Flowchart flowchart;
+
+    public Color unlockedPanelColor;
+    public Color unlockedTextColor;
+    public Color lockedPanelColor;
+    public Color lockedTextColor;
     
     // Start is called before the first frame update
     void Start()
     {
-    
+
     }
 
     // Update is called once per frame
@@ -59,10 +65,18 @@ public class TooltipController : MonoBehaviour
 
         if (!node.unlocked) {
             SetText("Locked", "", offset);
+            panelImage.color = lockedPanelColor;
+            titleText.color = lockedTextColor;
+            subtitleText.color = lockedTextColor;
+            
         } else {
             SetText(data.title, data.subtitle, offset);
+
+            panelImage.color = unlockedPanelColor;
+            titleText.color = unlockedTextColor;
+            subtitleText.color = unlockedTextColor;
         }
-        
+
         cg.alpha = 1f;
     }
 

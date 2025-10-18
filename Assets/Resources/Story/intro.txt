@@ -1,3 +1,6 @@
-This is a test line 1
-This is a test line 2 and i shall say some other stuff
-wow
+Welcome to Project Gamelan. 
+This is a blended music and story experience brought to you by Wai Kei and Sapphire. 
+Through this game, we hope that you'll learn more about the music of the gamelan, as well as the themes of unity and harmonny that such music can convey. 
+You may progress through a series of nodes through the map. 
+Every node will either contain a musical challenge, or a slice-of-life story cutscene. 
+We hope that this will be a fun, perhaps relaxing, perhaps entertaining game. 

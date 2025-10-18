@@ -6,7 +6,7 @@
         "title": "Lagu Gugur Gunung",
         "subtitle": "Bahagian Saron",
         "prereq": ["intro"],
-        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+        "description": "Lagu Gugur Gunung is a traditional folk song in Indonesia. The saron component of the song comprises the main melody."
     },
     {
         "key": "test",
@@ -30,7 +30,7 @@
         "title": "Lagu Gugur Gunung",
         "subtitle": "Bahagian Bonang Barung",
         "prereq": ["story2", "story3"],
-        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+        "description": "The melody of Lagu Gugur Gunung will be elaborated on further with the bonang barung instrument"
     },
     {
         "key": "story1",
@@ -38,55 +38,55 @@
         "title": "A day at the carpenter's",
         "subtitle": "Story-1",
         "prereq": ["intro"],
-        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+        "description": "A carpenter is working on carving a wooden bench. Some friends come to visit him."
     },
     {
         "key": "story2",
         "type": "story",
-        "title": "Story-2",
-        "subtitle": "A story: Electric Boogaloo",
+        "title": "Children of the kampung",
+        "subtitle": "Story-2",
         "prereq": ["saron"],
-        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+        "description": "Some children play around in the village fields on a bright weekend afternoon."
     },
     {
         "key": "story3",
         "type": "story",
-        "title": "Story-3",
-        "subtitle": "Another one",
+        "title": "Keropok making",
+        "subtitle": "Story-3",
         "prereq": ["story1"],
-        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+        "description": "Two mothers are making traditional keropok. A sneaky child shows up on a mission to steal some."
     },
     {
         "key": "story4",
         "type": "story",
-        "title": "Story-4",
-        "subtitle": "Another one",
+        "title": "A day in the classroom",
+        "subtitle": "Story-4",
         "prereq": ["story1"],
-        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+        "description": "It is a school day. Multiple children are gathered in a classroom, and some are dozing off..."
     },
     {
         "key": "story5",
         "type": "story",
-        "title": "Story-5",
-        "subtitle": "Another one",
+        "title": "A slow day with the cats",
+        "subtitle": "Story-5",
         "prereq": ["story4"],
-        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+        "description": "Two cats relax together in the fields with nothing to bother them... until they encounter a rude surprise."
     },
     {
         "key": "story6",
         "type": "story",
-        "title": "Story-6",
-        "subtitle": "Another one",
+        "title": "Preparing a feast",
+        "subtitle": "Story-6",
         "prereq": ["bonang"],
-        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+        "description": "Women prepare for a dinner feast for their families together."
     },
     {
         "key": "story7",
         "type": "story",
-        "title": "Story-7",
-        "subtitle": "Another one",
+        "title": "A performance in the night",
+        "subtitle": "Story-7",
         "prereq": ["story5"],
-        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+        "description": "Night falls in the kampung. People gather to watch a wayang kulit performance in high spirits."
     },
     {
         "key": "intro",
@@ -94,7 +94,7 @@
         "title": "Intro",
         "subtitle": "",
         "prereq": [],
-        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+        "description": "Introduction to the game"
     },
     {
         "key": "kendang",
@@ -102,7 +102,7 @@
         "title": "Lagu Gugur Gunung",
         "subtitle": "Bahagian Kendang",
         "prereq": ["story6", "story7"],
-        "description":"This is a filler description text. This will give a brief description of the instrument used in this level" 
+        "description":"In this level, you will play a kendang, a drum instrument crucial to most gamelan ensembles." 
     },
     {
         "key": "final",
@@ -110,7 +110,7 @@
         "title": "Lagu Gugur Gunung",
         "subtitle": "Semua Bahagian",
         "prereq": ["kendang"],
-        "description": "This is a filler description text. This will give a brief description of the instrument used in this level"
+        "description": "The final song, with all instruments included"
     }
 ]
 }

@@ -84,7 +84,6 @@ public class MapDataManager : MonoBehaviour
 
                     if (generalInfo.ContainsKey("Instrument")) {
                         temp.instrumentIndex = Util.ParseInt(info[3]);
-                        Debug.Log(temp.instrumentIndex);
                     }
 
                     mapData.Enqueue(temp);

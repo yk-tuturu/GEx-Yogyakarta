@@ -78,13 +78,13 @@ public class ScoreScreenUI : MonoBehaviour
 
         if (acc >= 100f) {
             gradeSpriteIndex = 0;
-        } else if (acc >= 95f) {
-            gradeSpriteIndex = 1;
         } else if (acc >= 90f) {
-            gradeSpriteIndex = 2;
+            gradeSpriteIndex = 1;
         } else if (acc >= 80f) {
+            gradeSpriteIndex = 2;
+        } else if (acc >= 60f) {
             gradeSpriteIndex = 3;
-        } else if (acc >= 70f) {
+        } else if (acc >= 40f) {
             gradeSpriteIndex = 4;
         } else {
             gradeSpriteIndex = 5;

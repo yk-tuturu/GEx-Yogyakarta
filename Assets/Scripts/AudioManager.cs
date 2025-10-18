@@ -7,22 +7,29 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    public AudioSource source;
-
     public List<AudioClip> commonSoundList;
     
     public Dictionary<string, AudioClip> soundDict = new Dictionary<string, AudioClip>();
 
+    private List<AudioSource> sourcePool = new List<AudioSource>();
+    private int nextSource = 0;
+
+    public float overallVolume = 1f;
+
+    void Awake() {
+        Instance = this;
+
+        for (int i = 0; i < 10; i++)
+        {
+            AudioSource src = gameObject.AddComponent<AudioSource>();
+            src.playOnAwake = false;
+            sourcePool.Add(src);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        if (Instance == null) {
-            Instance = this;
-        }
-            
-        else {
-            Destroy(gameObject);
-        }
             
         foreach (var clip in commonSoundList) {
             soundDict[clip.name] = clip;
@@ -34,7 +41,13 @@ public class AudioManager : MonoBehaviour
             }
         }
 
-        source.volume = PlayerPrefManager.Instance.GetVolume() / 100f;
+        //prewarm
+        foreach (var clip in soundDict.Values) {
+            AudioSource.PlayClipAtPoint(clip, Vector3.zero, 0f);
+        }
+
+        overallVolume = PlayerPrefManager.Instance.GetVolume() / 100f;
+        Debug.Log(soundDict.Count);
     }
 
     // Update is called once per frame
@@ -43,11 +56,15 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public void PlayOneShot(string clipName, bool pitchVariation = false, float volume = 1f) {
+    public void PlayOneShot(string clipName, bool pitchVariation = false, float volume = -1f) {
         if (!soundDict.ContainsKey(clipName)) {
             Debug.Log("audio clip not found!");
             return;
         }
+
+        AudioSource source = sourcePool[nextSource];
+        source.clip = soundDict[clipName];
+        source.volume = volume == -1f ? overallVolume : volume;
 
         if (pitchVariation) {
             source.pitch = Random.Range(0.9f, 1.1f);
@@ -55,12 +72,18 @@ public class AudioManager : MonoBehaviour
             source.pitch = 1f;
         }
 
-        source.volume = volume;
+        source.Play();
 
-        source.PlayOneShot(soundDict[clipName]);
+        nextSource = (nextSource + 1) % sourcePool.Count;
     }
 
-    public void SetVolume(int value) {
-        source.volume = value / 100f;
+    public void SetVolume(float volume) {
+        overallVolume = volume;
+    }
+
+    void OnDestroy() {
+        foreach (var source in sourcePool) {
+            source.Stop();
+        }
     }
 }

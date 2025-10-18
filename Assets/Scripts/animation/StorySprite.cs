@@ -20,6 +20,12 @@ public class StorySprite : MonoBehaviour
 
     }
 
+    void OnDestroy() {
+        DOTween.Kill(transform);
+        DOTween.Kill(sprRen);
+        StopAllCoroutines();
+    }
+
     public void Init(float x, float y, int index, bool flip) {
         transform.position = new Vector3(x, y, 0f);
         sprRen.sprite = sprites[index];
@@ -27,6 +33,19 @@ public class StorySprite : MonoBehaviour
         if (flip) {
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
+
+        isFlipped = flip;
+    }
+
+    public void Init(float x, float y, int index, bool flip, float scale) {
+        transform.position = new Vector3(x, y, 0f);
+        sprRen.sprite = sprites[index];
+
+        if (flip) {
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+
+        transform.localScale = Vector3.one * scale;
 
         isFlipped = flip;
     }
@@ -88,11 +107,36 @@ public class StorySprite : MonoBehaviour
         transform.DOJump(target, jumpForce, 1, duration).SetEase(Ease.Linear);
     }
 
+    public void JumpLoop(float jumpForce, float offsetX, float offsetY, float duration, int jumpCount, float loopDelay) {
+        Vector3 target = new Vector3(transform.position.x + offsetX, transform.position.y + offsetY, transform.position.z);
+
+        Sequence seq = DOTween.Sequence();
+
+        for (int i = 0; i < jumpCount; i++) {
+            seq.Append(transform.DOJump(target, jumpForce, 1, duration).SetEase(Ease.Linear));
+            seq.AppendInterval(loopDelay);
+
+            target = new Vector3(target.x + offsetX, target.y + offsetY, target.z);
+        }
+
+        seq.SetTarget(transform);
+        seq.Play();
+    }
     
 
     public void Move(float offsetX, float offsetY, float duration) {
         Vector3 target = new Vector3(transform.position.x + offsetX, transform.position.y + offsetY, transform.position.z);
         transform.DOMove(target, duration);
+    }
+
+    public void MoveBounce(float offsetX, float offsetY, float duration) {
+        Vector3 target = new Vector3(transform.position.x + offsetX, transform.position.y + offsetY, transform.position.z);
+        transform.DOMove(target, duration).SetEase(Ease.OutBounce);
+    }
+
+    public void MoveLinear(float offsetX, float offsetY, float duration) {
+        Vector3 target = new Vector3(transform.position.x + offsetX, transform.position.y + offsetY, transform.position.z);
+        transform.DOMove(target, duration).SetEase(Ease.Linear);
     }
 
     public void MoveLoop(float offsetX, float offsetY, float duration, int loopCount, float loopDelay) {
@@ -105,7 +149,8 @@ public class StorySprite : MonoBehaviour
         seq.Append(transform.DOMove(target, duration))
             .Append(transform.DOMove(ogPos, duration))
            .AppendInterval(loopDelay) 
-           .SetLoops(loopCount, LoopType.Restart); 
+           .SetLoops(loopCount, LoopType.Restart)
+           .SetTarget(transform);
         
         seq.Play();
     }
@@ -120,6 +165,14 @@ public class StorySprite : MonoBehaviour
         }
 
         transform.DOMove(exitPoint, duration);
+    }
+
+    public void SetLayer(int layer) {
+        sprRen.sortingOrder = layer;
+    }
+
+    public void Darken(float val, float duration) {
+        sprRen.DOColor(new Color(val, val, val, 1), duration);
     }
 
     // public void ExitRight() {

@@ -11,6 +11,8 @@ public class StoryLoader : MonoBehaviour
 {
     public static StoryLoader Instance; 
     public string storyFile;
+    public string title;
+    public string subtitle;
 
 
     void Awake() {
@@ -23,8 +25,10 @@ public class StoryLoader : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void LoadStoryScene(string storyFile) {
+    public void LoadStoryScene(string storyFile, string title, string subtitle) {
         this.storyFile = storyFile;
+        this.title = title;
+        this.subtitle = subtitle;
         SceneManager.LoadScene("story");
     }
 

@@ -13,6 +13,7 @@ using UnityEngine.SceneManagement;
 public class AnimationParser : MonoBehaviour
 {
     public string filename;
+    public string testFilename;
 
     public List<AnimationScene> scenes = new List<AnimationScene>(); 
 
@@ -20,13 +21,22 @@ public class AnimationParser : MonoBehaviour
 
     public CanvasGroup blackScreen;
     public RectTransform titlePanel;
-    public TextMeshProUGUI titleText;
     public CanvasGroup cg; 
+
+    public TextMeshProUGUI titleText;
+    public TextMeshProUGUI subtitleText;
+
+    public RandomBGM bgm;
     
     // Start is called before the first frame update
     void Start()
     {
-        filename = StoryLoader.Instance.storyFile;
+        if (StoryLoader.Instance != null) {
+            filename = StoryLoader.Instance.storyFile;
+        } else {
+            filename = testFilename;
+        }
+        
         ReadFile();
         PlayAnim();
     }
@@ -68,7 +78,14 @@ public class AnimationParser : MonoBehaviour
             bool flip = Util.ParseBoolean(parts[4]);
             bool active = Util.ParseBoolean(parts[5]); 
 
-            spriteManager.AddSprite(parts[0], x, y, index, flip, active);
+            if (parts.Length == 7) {
+                float scale = Util.ParseFloat(parts[6]);
+                spriteManager.AddSprite(parts[0], x, y, index, flip, active, scale);
+            } else {
+                spriteManager.AddSprite(parts[0], x, y, index, flip, active);
+            }
+
+            
         }
     }
 
@@ -85,7 +102,11 @@ public class AnimationParser : MonoBehaviour
                 continue;
             }
 
-
+            if (command == "fadeout") {
+                float duration = Util.ParseFloat(parts[1]);
+                result[i] = new FadeOutMusic(bgm, duration);
+                continue;
+            }
             StorySprite target = spriteManager.GetSprite(parts[1]);
             
             if (command == "move") {
@@ -121,7 +142,17 @@ public class AnimationParser : MonoBehaviour
                 float offsetY = Util.ParseFloat(parts[4]);
                 float duration = Util.ParseFloat(parts[5]);
                 result[i] = new JumpCommand(target, jumpForce, offsetX, offsetY, duration);
-            } else if (command == "animate") {
+            }else if (command == "jumpLoop") {
+                float jumpForce = Util.ParseFloat(parts[2]);
+                float offsetX = Util.ParseFloat(parts[3]);
+                float offsetY = Util.ParseFloat(parts[4]);
+                float duration = Util.ParseFloat(parts[5]);
+                int jumpCount = Util.ParseInt(parts[6]);
+                float loopDelay = Util.ParseFloat(parts[7]);
+                result[i] = new JumpLoopAnim(target, jumpForce, offsetX, offsetY, duration, jumpCount, loopDelay);
+            } 
+            
+            else if (command == "animate") {
                 int[] frames = parts[2]
                     .Split(':')  
                     .Select(int.Parse)
@@ -148,7 +179,36 @@ public class AnimationParser : MonoBehaviour
                 float duration = Util.ParseFloat(parts[3]);
 
                 result[i] = new ExitCommand(target, direction, duration);
-            } 
+            } else if (command == "show") {
+                result[i] = new ShowCommand(target);
+            } else if (command == "hide") {
+                result[i] = new HideCommand(target);
+            } else if (command == "setpos") {
+                float x = Util.ParseFloat(parts[2]);
+                float y = Util.ParseFloat(parts[3]);
+                float z = Util.ParseFloat(parts[4]);
+                result[i] = new SetPosCommand(target, x, y, z);
+            } else if (command == "moveLinear") {
+                float offsetX = Util.ParseFloat(parts[2]);
+                float offsetY = Util.ParseFloat(parts[3]);
+                float duration = Util.ParseFloat(parts[4]);
+
+                result[i] = new MoveLinear(target, offsetX, offsetY, duration);
+            } else if (command == "moveBounce") {
+                float offsetX = Util.ParseFloat(parts[2]);
+                float offsetY = Util.ParseFloat(parts[3]);
+                float duration = Util.ParseFloat(parts[4]);
+
+                result[i] = new MoveBounce(target, offsetX, offsetY, duration);
+            } else if (command == "setLayer") {
+                int layer = Util.ParseInt(parts[2]);
+                result[i] = new SetLayer(target, layer);
+            } else if (command == "darken") {
+                float val = Util.ParseFloat(parts[2]);
+                float duration = Util.ParseFloat(parts[3]);
+
+                result[i] = new DarkenAnim(target, val, duration);
+            }
         }
 
         return result;
@@ -159,6 +219,10 @@ public class AnimationParser : MonoBehaviour
     }
 
     public void AnimateTitleCard() {
+        titleText.text = StoryLoader.Instance.title;
+        subtitleText.text = StoryLoader.Instance.subtitle;
+        titlePanel.gameObject.SetActive(true);
+
         float offset = 800f;
         Vector2 originalPos = titlePanel.anchoredPosition;
         titlePanel.anchoredPosition = new Vector2(originalPos.x, originalPos.y + offset);

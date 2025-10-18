@@ -73,8 +73,7 @@ public class JudgementLine : MonoBehaviour
             nextNote.OnDespawnEvent -= OnDespawnNote;
             int hitValue = nextNote.GetScore();
             bool isLastNote = nextNote.id == MapDataManager.Instance.totalHitObjectCount - 1;
-            
-            Debug.Log(nextNote.instrumentIndex);
+
             if (nextNote.instrumentIndex != -1) {
                 laneUiManager.PlayInstrument(nextNote.instrumentIndex);
             }

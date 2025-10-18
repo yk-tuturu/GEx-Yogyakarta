@@ -6,10 +6,11 @@ using DG.Tweening;
 public class Glow : MonoBehaviour
 {
     // Start is called before the first frame update
+    SpriteRenderer spr;
     void Start()
     {
         Debug.Log("glow spawned");
-        SpriteRenderer spr = GetComponent<SpriteRenderer>();
+        spr = GetComponent<SpriteRenderer>();
 
         Sequence seq = DOTween.Sequence();
         seq.Append(spr.DOFade(1f, 0.1f));
@@ -19,6 +20,11 @@ public class Glow : MonoBehaviour
         });
 
         seq.Play();
+    }
+
+    void OnDestroy() {
+        DOTween.Kill(transform);
+        DOTween.Kill(spr);
     }
 
     // Update is called once per frame

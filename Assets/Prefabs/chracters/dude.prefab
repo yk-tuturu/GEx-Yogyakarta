@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: f5a6725b3a1c3de4da4a25eb1753d6a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 548b2b3eb7da68649a3f21ca02daca64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: f5a6725b3a1c3de4da4a25eb1753d6a8, type: 3}
   - {fileID: 21300000, guid: 121e8b56a02710c44a20eb6655304a35, type: 3}
+  - {fileID: 21300000, guid: 548b2b3eb7da68649a3f21ca02daca64, type: 3}
   sprRen: {fileID: 4935677083769481400}
   characterName: dude
   isFlipped: 0

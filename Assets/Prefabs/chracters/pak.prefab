@@ -101,6 +101,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f3130b4000809f541b87637444b1b0af, type: 3}
   - {fileID: 21300000, guid: 98536e8b145d5504fbdc8ba8ec1924b7, type: 3}
   - {fileID: 21300000, guid: 2fd93f8e27e3cef49b852e16c075d48c, type: 3}
+  - {fileID: 21300000, guid: cd5d2fa97b8658442ab4e8da8839ce1f, type: 3}
+  - {fileID: 21300000, guid: 45fcb0f4fcaa8f144b8da78272919ddf, type: 3}
+  - {fileID: 21300000, guid: da1912278334e264aada4a9f5b8ecaf9, type: 3}
+  - {fileID: 21300000, guid: eefd23f043c3b804db01ba3f4675b83a, type: 3}
   sprRen: {fileID: 4844538255003996475}
   characterName: pak
   isFlipped: 0

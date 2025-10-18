@@ -86,19 +86,26 @@ public class LaneUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int lastScore = currScore;
         if (currScore < targetScore) {
             currScore = Mathf.Min(currScore + scoreStepSize, targetScore);
         }
 
-        scoreText.SetText("{0:0000000}", currScore);
-
+        if (lastScore != currScore) {
+            scoreText.text = currScore.ToString("0000000");
+        }
+        
+        float lastAcc = currAcc;
         if (Mathf.Abs(targetAcc - currAcc) > Mathf.Abs(accStepSize)) {
             currAcc = currAcc + accStepSize;
         } else {
             currAcc = targetAcc;
         }
 
-        accText.SetText("{0:0.00}%", currAcc);
+        if (Mathf.Abs(currAcc - lastAcc) > 0.001f)
+        {
+            accText.text = currAcc.ToString("0.00") + "%";
+        }
     }
 
     public void SetHidden() {

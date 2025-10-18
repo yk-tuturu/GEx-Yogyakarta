@@ -28,6 +28,12 @@ public class NodeNavigator : MonoBehaviour
         MenuStateManager.Instance.currentNode = startingNode;
         MenuStateManager.Instance.OnEnterState += EnterState;
 
+        StartCoroutine(delayShowTooltip());
+    }
+
+    IEnumerator delayShowTooltip() {
+        yield return new WaitForSeconds(0.1f);
+
         tooltip.ShowTooltip(startingNode);
     }
 

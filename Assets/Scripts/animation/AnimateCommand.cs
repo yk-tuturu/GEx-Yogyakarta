@@ -22,6 +22,8 @@ public class AnimateCommand : AnimationCommand
     }
 
     public override void Run() {
+        Debug.Log(target);
+        Debug.Log(target.characterName);
         target.Animate(frames, frameDelay, loopCount);
     }
 }

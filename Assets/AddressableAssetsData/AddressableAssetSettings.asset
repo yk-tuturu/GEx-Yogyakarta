@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 5f4886a9699b96b4d901197b2935649f
   m_currentHash:
     serializedVersion: 2
-    Hash: 2efab6da187a10ac51dc25b631b8e156
+    Hash: 8b2b1125061edaca6ec6f92fa0bba596
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
     - bonang
     - kendang
     - intro
+    - final
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 342132c5c0e62844093f33e38988b28d, type: 2}

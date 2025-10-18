@@ -20,7 +20,8 @@ public class PlayerPrefManager : MonoBehaviour
         "story6",
         "story7",
         "test",
-        "charles"
+        "charles",
+        "never"
     };
 
     void Awake() {
@@ -37,11 +38,11 @@ public class PlayerPrefManager : MonoBehaviour
         } 
 
         if (!PlayerPrefs.HasKey("scroll")) {
-            PlayerPrefs.SetInt("scroll", 15);
+            PlayerPrefs.SetInt("scroll", 10);
         }
 
         if (!PlayerPrefs.HasKey("offset")) {
-            PlayerPrefs.SetInt("offset", -3);
+            PlayerPrefs.SetInt("offset", 0);
         }
 
         foreach(string key in levels) {

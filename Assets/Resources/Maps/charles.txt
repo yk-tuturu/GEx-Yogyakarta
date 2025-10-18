@@ -2,7 +2,7 @@
 Audio:charles.wav
 Title:Charles
 Subtitle:Balloon
-Delay:0
+Delay:3
 Story:teststory
 [HitObject]
 1,1.264,soft-hitnormal

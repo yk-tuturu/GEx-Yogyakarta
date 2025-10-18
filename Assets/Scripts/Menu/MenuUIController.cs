@@ -133,10 +133,13 @@ public class MenuUIController : MonoBehaviour
     }
 
     public void LoadStoryLevel(string storyFile) {
+        string key = MenuStateManager.Instance.currentNode.key;
+        NodeData data = NodeInfoParser.Instance.GetNodeInfo(key);
+
         loadingPanel.gameObject.SetActive(true);
         loadingPanel.alpha = 0f;
         loadingPanel.DOFade(1f, 0.4f).OnComplete(()=> {
-            StoryLoader.Instance.LoadStoryScene(storyFile);
+            StoryLoader.Instance.LoadStoryScene(storyFile, data.title, data.subtitle);
         }); 
     }
 

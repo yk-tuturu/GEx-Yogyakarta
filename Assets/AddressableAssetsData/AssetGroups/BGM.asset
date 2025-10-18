@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: bb3bf2a1cd0e1bc40a9c1794901f1325
   m_SerializeEntries:
-  - m_GUID: 184de9d734a0e4b45932885caa740ac6
-    m_Address: Assets/Sounds/BGM/bonang.wav
+  - m_GUID: 0ac76eb1046a89b42bcb240e6826a419
+    m_Address: Assets/Sounds/BGM/saron-no-bgm.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -39,6 +39,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bda18ed2e3a8d78448469ea54adf834f
     m_Address: Assets/Sounds/BGM/saron.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c15871474365f1240b401abf5600f306
+    m_Address: Assets/Sounds/BGM/bonang.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ced7eb273a0bd22458ae8ffcc70afeca
+    m_Address: Assets/Sounds/BGM/gamelan-full.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -1,3 +1,7 @@
-This is a test line 1
-This is a test line 2 and i shall say some other stuff
-wow
+There is a second class of gamelan instruments known as the <b>elaborating</b> instruments. 
+In Indonesian, these instruments can be called <i>pengisi</i>, which means to fill in the gaps. 
+It is the role of the elaborating instruments to add movement and nuance to the basic melody provided by the balungan. 
+Each instrument follows its own rules in its elaboration. 
+For instance, the instrument for this level is the bonang barung, a set of bronze pots held in a wooden frame. 
+The bonang is generally played on the off-beats of the main melody, presenting a unique rhythmic challenge to the player. 
+The result, when combined with the main melody, is a 'fuller', more complete sound. 
