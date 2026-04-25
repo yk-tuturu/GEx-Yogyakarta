@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.UI;
 
 public class MenuUIController : MonoBehaviour
 {
@@ -25,14 +26,14 @@ public class MenuUIController : MonoBehaviour
     public int panelActiveButton = 0;
     public SidePanelButton[] sidePanelButtons;
 
+    public Image backPanel;
+
     void Awake() {
         Instance = this;
     }
     // Start is called before the first frame update
     void Start()
     {
-
-
         nodePanel.gameObject.SetActive(false);
         nodePanelPos = nodePanel.anchoredPosition;
         nodePanel.anchoredPosition = new Vector3(nodePanelPos.x + offset, nodePanelPos.y, nodePanelPos.z);
@@ -74,6 +75,12 @@ public class MenuUIController : MonoBehaviour
         UpdateButtons();
     }
 
+    public void NodeBackPanelClicked() {
+        Debug.Log("back panel clicked");
+        backPanel.raycastTarget =  false;
+        MenuStateManager.Instance.ChangeState(MenuState.Navigation);
+    }
+
     void OnEnterPressed() {
         if (MenuStateManager.Instance.currentState != MenuState.Panel) return; 
 
@@ -84,6 +91,7 @@ public class MenuUIController : MonoBehaviour
     public void ShowNodePanel() {
         nodePanel.gameObject.SetActive(true);
         nodePanel.DOAnchorPosX(nodePanelPos.x, 0.3f);
+        backPanel.raycastTarget = true;
 
         string key = MenuStateManager.Instance.currentNode.key;
         NodeData data = NodeInfoParser.Instance.GetNodeInfo(key);
@@ -102,6 +110,7 @@ public class MenuUIController : MonoBehaviour
         nodePanel.DOAnchorPosX(nodePanelPos.x + offset, 0.3f).OnComplete(()=>{
             nodePanel.gameObject.SetActive(false);
         });
+        AudioManager.Instance.PlayOneShot("panelOpen");
     }
 
     public void UpdateButtons() {

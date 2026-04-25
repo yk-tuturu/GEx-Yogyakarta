@@ -11,6 +11,9 @@ public class NodeNavigator : MonoBehaviour
     public bool isNodeSelected;
 
     public TooltipController tooltip;
+
+    public Transform flowchart;
+    public List<Node> nodes = new List<Node>();
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,12 @@ public class NodeNavigator : MonoBehaviour
         MenuStateManager.Instance.OnEnterState += EnterState;
 
         StartCoroutine(delayShowTooltip());
+
+        foreach (Transform child in flowchart) {
+            Node node = child.GetComponent<Node>();
+            nodes.Add(node);
+            node.moveToNode += MoveToNode;
+        }
     }
 
     IEnumerator delayShowTooltip() {
@@ -42,12 +51,10 @@ public class NodeNavigator : MonoBehaviour
         InputManager.Instance.OnEnterPressed -= OnEnterPressed; 
         InputManager.Instance.OnEscPressed -= OnEscPressed; 
         MenuStateManager.Instance.OnEnterState -= EnterState;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        foreach (Node node in nodes) {
+            node.moveToNode -= MoveToNode;
+        }
     }
 
     void EnterState(MenuState state) {
@@ -131,6 +138,17 @@ public class NodeNavigator : MonoBehaviour
             AudioManager.Instance.PlayOneShot("nodeSfx", true, 0.7f);
         }
         
+    }
+
+    public void MoveToNode(Node node) {
+        tooltip.HideTooltip();
+
+        DOTween.Kill(transform);
+        Vector3 pos = node.transform.position;
+        transform.DOMove(new Vector3(pos.x, pos.y, -10), 0.2f).SetEase(Ease.OutSine).OnComplete(()=> {
+            tooltip.ShowTooltip(node);
+        });
+        AudioManager.Instance.PlayOneShot("nodeSfx", true, 0.7f);
     }
 
 }

@@ -10,10 +10,14 @@ public class Settings : MonoBehaviour
     public VolumeSlider volumeSlider;
     public ScrollSpeedPanel scrollPanel;
     public OffsetPanel offsetPanel;
+
+    public MenuStateManager msm; 
+    public MenuState stateBefore;
     // Start is called before the first frame update
     void Start()
     {
         GetValues();
+        msm = MenuStateManager.Instance;
     }
 
     // Update is called once per frame
@@ -26,11 +30,16 @@ public class Settings : MonoBehaviour
         this.gameObject.SetActive(true);
         GetValues();
         AudioManager.Instance.PlayOneShot("settingOpen");
+
+        stateBefore = msm.currentState;
+        msm.ChangeState(MenuState.Settings);
     }
 
     public void Close() {
         this.gameObject.SetActive(false);
         AudioManager.Instance.PlayOneShot("settingClose");
+
+        msm.ChangeState(stateBefore);
     }
 
     public void GetValues() {
